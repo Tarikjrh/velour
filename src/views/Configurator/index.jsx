@@ -16,7 +16,6 @@ export default function Configurator() {
       sx={{
         overflowX: { xs: "hidden", md: "visible" },
         backgroundColor: "#fff",
-        border: "1px solid red",
       }}
       maxWidth={"lg"}
     >
