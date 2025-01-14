@@ -3,6 +3,8 @@ import Catalog from "../views/Catalog";
 import Configurator from "../views/Configurator";
 import { Suspense } from "react";
 import SplashScreen from "../components/SplashScreen";
+import VNavBar from "../components/VNavbar";
+import Page404 from "../pages/error/Page404";
 
 // ----------------------------------------------------------------------
 
@@ -14,14 +16,32 @@ export const mainRoutes = [
   {
     element: (
       // <SimpleLayout>
-      <Suspense fallback={<SplashScreen />}>
-        <Outlet />
-      </Suspense>
+      <>
+        <VNavBar />
+
+        <Suspense fallback={<SplashScreen />}>
+          <Outlet />
+        </Suspense>
+      </>
       // </SimpleLayout>
     ),
     children: [
       { path: "catalog", element: <Catalog /> },
       { path: "configure", element: <Configurator /> },
+    ],
+  },
+  {
+    element: (
+      <Suspense fallback={<SplashScreen />}>
+        <Outlet />
+      </Suspense>
+    ),
+    children: [
+      // { path: "coming-soon", element: <ComingSoonPage /> },
+      // { path: "maintenance", element: <MaintenancePage /> },
+      // { path: "500", element: <Page500 /> },
+      { path: "404", element: <Page404 /> },
+      // { path: "403", element: <Page403 /> },
     ],
   },
 ];

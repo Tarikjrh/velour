@@ -4,7 +4,7 @@ import Router from "./routes";
 
 export default function App() {
   return (
-    <Box>
+    <Box sx={{ backgroundColor: "white" }}>
       <Router />
       <Analytics />
     </Box>
