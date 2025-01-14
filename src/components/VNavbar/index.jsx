@@ -10,13 +10,13 @@ import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
-import { Container, ListItemIcon, Stack } from "@mui/material";
-import Iconify from "./iconify";
+import { Container, Link, ListItemIcon, Stack } from "@mui/material";
+import Iconify from "../iconify";
 
 const drawerWidth = 240;
 const navItems = ["About", "Catalog", "Contact"];
 
-function DrawerAppBar(props) {
+function VNavBar(props) {
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
@@ -73,7 +73,12 @@ function DrawerAppBar(props) {
           </IconButton>
           <Box sx={{ display: { xs: "none", sm: "block" } }}>
             {navItems.map((item) => (
-              <Button key={item} sx={{ color: "#000", textTransform: "none" }}>
+              <Button
+                component={Link}
+                href={item}
+                key={item}
+                sx={{ color: "#000", textTransform: "none" }}
+              >
                 {item}
               </Button>
             ))}
@@ -105,7 +110,7 @@ function DrawerAppBar(props) {
   );
 }
 
-DrawerAppBar.propTypes = {
+VNavBar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -113,4 +118,4 @@ DrawerAppBar.propTypes = {
   window: PropTypes.func,
 };
 
-export default DrawerAppBar;
+export default VNavBar;
