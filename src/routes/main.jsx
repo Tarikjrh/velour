@@ -27,7 +27,7 @@ export const mainRoutes = [
     ),
     children: [
       { path: "catalog", element: <Catalog /> },
-      { path: "configure", element: <Configurator /> },
+      { path: "configurator", element: <Configurator /> },
     ],
   },
   {

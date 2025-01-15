@@ -11,6 +11,17 @@ import { useBoolean } from "../../hooks/use-boolean";
 import EmptyContent from "../../components/EmptyContent";
 import ProductList from "./components/ProductList";
 import products from "./products";
+import ProductFilters from "./components/ProductFilters";
+import {
+  PRODUCT_CATEGORY_OPTIONS,
+  PRODUCT_COLOR_OPTIONS,
+  PRODUCT_GENDER_OPTIONS,
+  PRODUCT_RATING_OPTIONS,
+  PRODUCT_SORT_OPTIONS,
+} from "./_product";
+import ProductSort from "./components/ProductSort";
+import ProductSearch from "./components/ProductSearch";
+import ProductFiltersResult from "./components/ProductFiltersResult";
 
 // ----------------------------------------------------------------------
 
@@ -37,8 +48,6 @@ export default function ProductShopView() {
 
   const [filters, setFilters] = useState(defaultFilters);
 
-  // const { products, productsLoading, productsEmpty } = useGetProducts();
-
   // const { searchResults, searchLoading } = useSearchProducts(debouncedQuery);
 
   const handleFilters = useCallback((name, value) => {
@@ -58,71 +67,70 @@ export default function ProductShopView() {
 
   const notFound = !dataFiltered.length && canReset;
 
-  // const handleSortBy = useCallback((newValue) => {
-  //   setSortBy(newValue);
-  // }, []);
+  const handleSortBy = useCallback((newValue) => {
+    setSortBy(newValue);
+  }, []);
 
-  // const handleSearch = useCallback((inputValue) => {
-  //   setSearchQuery(inputValue);
-  // }, []);
+  const handleSearch = useCallback((inputValue) => {
+    setSearchQuery(inputValue);
+  }, []);
 
-  // const handleResetFilters = useCallback(() => {
-  //   setFilters(defaultFilters);
-  // }, []);
+  const handleResetFilters = useCallback(() => {
+    setFilters(defaultFilters);
+  }, []);
 
-  // const renderFilters = (
-  //   <Stack
-  //     spacing={3}
-  //     justifyContent="space-between"
-  //     alignItems={{ xs: "flex-end", sm: "center" }}
-  //     direction={{ xs: "column", sm: "row" }}
-  //   >
-  //     <ProductSearch
-  //       query={debouncedQuery}
-  //       results={searchResults}
-  //       onSearch={handleSearch}
-  //       loading={searchLoading}
-  //       hrefItem={(id) => paths.product.details(id)}
-  //     />
+  const renderFilters = (
+    <Stack
+      spacing={3}
+      justifyContent="space-between"
+      alignItems={{ xs: "flex-end", sm: "center" }}
+      direction={{ xs: "column", sm: "row" }}
+    >
+      <ProductSearch
+      // query={debouncedQuery}
+      // results={searchResults}
+      // onSearch={handleSearch}
+      // loading={searchLoading}
+      // hrefItem={(id) => paths.product.details(id)}
+      />
 
-  //     <Stack direction="row" spacing={1} flexShrink={0}>
-  //       <ProductFilters
-  //         open={openFilters.value}
-  //         onOpen={openFilters.onTrue}
-  //         onClose={openFilters.onFalse}
-  //         //
-  //         filters={filters}
-  //         onFilters={handleFilters}
-  //         //
-  //         canReset={canReset}
-  //         onResetFilters={handleResetFilters}
-  //         //
-  //         colorOptions={PRODUCT_COLOR_OPTIONS}
-  //         ratingOptions={PRODUCT_RATING_OPTIONS}
-  //         genderOptions={PRODUCT_GENDER_OPTIONS}
-  //         categoryOptions={["all", ...PRODUCT_CATEGORY_OPTIONS]}
-  //       />
+      <Stack direction="row" spacing={1} flexShrink={0}>
+        <ProductFilters
+          open={openFilters.value}
+          onOpen={openFilters.onTrue}
+          onClose={openFilters.onFalse}
+          //
+          filters={filters}
+          onFilters={handleFilters}
+          //
+          canReset={canReset}
+          onResetFilters={handleResetFilters}
+          colorOptions={PRODUCT_COLOR_OPTIONS}
+          ratingOptions={PRODUCT_RATING_OPTIONS}
+          genderOptions={PRODUCT_GENDER_OPTIONS}
+          categoryOptions={["all", ...PRODUCT_CATEGORY_OPTIONS]}
+        />
 
-  //       <ProductSort
-  //         sort={sortBy}
-  //         onSort={handleSortBy}
-  //         sortOptions={PRODUCT_SORT_OPTIONS}
-  //       />
-  //     </Stack>
-  //   </Stack>
-  // );
+        <ProductSort
+          sort={sortBy}
+          onSort={handleSortBy}
+          sortOptions={PRODUCT_SORT_OPTIONS}
+        />
+      </Stack>
+    </Stack>
+  );
 
-  // const renderResults = (
-  //   <ProductFiltersResult
-  //     filters={filters}
-  //     onFilters={handleFilters}
-  //     //
-  //     canReset={canReset}
-  //     onResetFilters={handleResetFilters}
-  //     //
-  //     results={dataFiltered.length}
-  //   />
-  // );
+  const renderResults = (
+    <ProductFiltersResult
+      filters={filters}
+      onFilters={handleFilters}
+      //
+      canReset={canReset}
+      onResetFilters={handleResetFilters}
+      //
+      results={dataFiltered.length}
+    />
+  );
 
   const renderNotFound = (
     <EmptyContent filled title="No Data" sx={{ py: 10 }} />
@@ -135,8 +143,6 @@ export default function ProductShopView() {
         mb: 15,
       }}
     >
-      {/* <CartIcon totalItems={checkout.totalItems} /> */}
-
       <Typography
         variant="h4"
         sx={{
@@ -152,12 +158,12 @@ export default function ProductShopView() {
           mb: { xs: 3, md: 5 },
         }}
       >
-        {/* {renderFilters} */}
+        {renderFilters}
 
-        {/* {canReset && renderResults} */}
+        {canReset && renderResults}
       </Stack>
 
-      {/* {(notFound || productsEmpty) && renderNotFound} */}
+      {notFound && renderNotFound}
 
       <ProductList products={dataFiltered} loading={false} />
     </Container>

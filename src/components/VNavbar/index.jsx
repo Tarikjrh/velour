@@ -69,9 +69,14 @@ function VNavBar(props) {
             onClick={handleDrawerToggle}
             sx={{ display: { sm: "none" } }}
           >
-            <Iconify icon="material-symbols:menu" width="24px" height="24px" />
+            <Iconify icon="material-symbols:menu" width={24} height={24} />
           </IconButton>
-          <Box sx={{ display: { xs: "none", sm: "block" } }}>
+          <Box
+            component={Stack}
+            direction="row"
+            spacing={2}
+            sx={{ display: { xs: "none", sm: "flex" } }}
+          >
             {navItems.map((item) => (
               <Button
                 component={Link}
