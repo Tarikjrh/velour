@@ -12,17 +12,29 @@ import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
 import { Container, Link, ListItemIcon, Stack } from "@mui/material";
 import Iconify from "../iconify";
+import { useLocales } from "../../locales";
 
 const drawerWidth = 240;
-const navItems = ["About", "Catalog", "Contact"];
 
 function VNavBar(props) {
+  const locales = useLocales();
+  const { t } = useLocales();
+
+  const navItems = [t("nav.about"), "Catalog", "Contact"];
+
   const { window } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
   };
+
+  const handleChangeLang = React.useCallback(
+    (newLang) => {
+      locales.onChangeLang(newLang);
+    },
+    [locales]
+  );
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
@@ -58,7 +70,11 @@ function VNavBar(props) {
           justifyContent={"space-between"}
           alignItems={"center"}
         >
-          <Box sx={{ width: { xs: "20%", md: "84px" } }}>
+          <Box
+            component={Link}
+            href="/"
+            sx={{ width: { xs: "20%", md: "84px" } }}
+          >
             <img src={"logo2.png"} />
           </Box>
 
@@ -87,6 +103,20 @@ function VNavBar(props) {
                 {item}
               </Button>
             ))}
+            <Button variant="contained" sx={{ backgroundColor: "#1E1E1E" }}>
+              Order Now
+            </Button>
+
+            <Button
+              startIcon={<Iconify icon="mdi:language" />}
+              onClick={() =>
+                handleChangeLang(
+                  locales.currentLang.value === "en" ? "ar" : "en"
+                )
+              }
+            >
+              {locales.currentLang.value === "en" ? "عربي" : "English"}
+            </Button>
           </Box>
         </Stack>
       </Container>
