@@ -8,9 +8,8 @@ import {
   ThemeProvider as MuiThemeProvider,
 } from "@mui/material/styles";
 // locales
-// import { useLocales } from "src/locales";
 // components
-// import { useSettingsContext } from "src/components/settings";
+import { useSettingsContext } from "../components/settings";
 // system
 import { palette } from "./palette";
 import { shadows } from "./shadows";
@@ -21,29 +20,15 @@ import { componentsOverrides } from "./overrides";
 import { presets } from "./options/presets";
 import { darkMode } from "./options/dark-mode";
 import { contrast } from "./options/contrast";
-// import RTL, { direction } from "./options/right-to-left";
+import RTL, { direction } from "./options/right-to-left";
+import { useLocales } from "../locales";
 
 // ----------------------------------------------------------------------
 
 export default function ThemeProvider({ children }) {
-  const { currentLang } = {
-    label: "English",
-    value: "en",
-    systemValue: {},
-    icon: "flagpack:gb-nir",
-  };
+  const { currentLang } = useLocales();
 
-  // const settings = useSettingsContext();
-  const settings = {
-    themeMode: "light",
-    themeDirection: "ltr",
-    themeContrast: "bold",
-    themeLayout: "vertical",
-    themeColorPresets: "default",
-    themeStretch: false,
-    canReset: true,
-    open: false,
-  };
+  const settings = useSettingsContext();
 
   const darkModeOption = darkMode(settings.themeMode);
 
@@ -54,7 +39,7 @@ export default function ThemeProvider({ children }) {
     settings.themeMode
   );
 
-  // const directionOption = direction(settings.themeDirection);
+  const directionOption = direction(settings.themeDirection);
 
   const baseOption = useMemo(
     () => ({
@@ -73,20 +58,20 @@ export default function ThemeProvider({ children }) {
         // Base
         baseOption,
         // Direction: remove if not in use
-        // directionOption,
+        directionOption,
         // Dark mode: remove if not in use
         darkModeOption,
         // Presets: remove if not in use
-        presetsOption
+        presetsOption,
         // Contrast: remove if not in use
-        // contrastOption.theme
+        contrastOption.theme
       ),
     [
       baseOption,
-      // directionOption,
+      directionOption,
       darkModeOption,
       presetsOption,
-      // contrastOption.theme,
+      contrastOption.theme,
     ]
   );
 
@@ -98,16 +83,16 @@ export default function ThemeProvider({ children }) {
   );
 
   const themeWithLocale = useMemo(
-    () => createTheme(theme, "en"),
-    ["en", theme]
+    () => createTheme(theme, currentLang.systemValue),
+    [currentLang.systemValue, theme]
   );
 
   return (
     <MuiThemeProvider theme={themeWithLocale}>
-      {/* <RTL themeDirection={settings.themeDirection}> */}
-      <CssBaseline />
-      {children}
-      {/* </RTL> */}
+      <RTL themeDirection={settings.themeDirection}>
+        <CssBaseline />
+        {children}
+      </RTL>
     </MuiThemeProvider>
   );
 }
