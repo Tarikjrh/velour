@@ -10,10 +10,16 @@ export default function Customization() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-        height: "100vh",
       }}
     >
-      <Image src="/customization_bg.png" ratio="16/9" />
+      <Box
+        sx={{
+          width: "100%",
+          height: "100%",
+        }}
+      >
+        <Image src="/customization_bg.png" ratio="16/9" />
+      </Box>
       <Container
         sx={{
           position: "absolute",
@@ -26,7 +32,12 @@ export default function Customization() {
       >
         <Typography
           variant="h2"
-          sx={{ color: "#fff", maxWidth: "60%", fontWeight: "medium" }}
+          sx={{
+            color: "#fff",
+            maxWidth: { md: "60%" },
+            fontWeight: "medium",
+            lineHeight: "1",
+          }}
         >
           Customizable, durable
           <br /> uniforms for every <br />
