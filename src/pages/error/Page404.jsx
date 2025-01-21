@@ -1,5 +1,5 @@
 import { Box, Button, Container, Link, Stack, Typography } from "@mui/material";
-import React from "react";
+import Iconify from "../../components/iconify";
 
 export default function Page404() {
   return (
@@ -22,7 +22,12 @@ export default function Page404() {
           <Typography variant={"h1"} sx={{ color: "#fff" }}>
             Sorry Page not Found
           </Typography>
-          <Button component={Link} href={"/"} variant="contained">
+          <Button
+            startIcon={<Iconify icon="solar:home-bold" />}
+            component={Link}
+            href={"/"}
+            variant="contained"
+          >
             Go Home
           </Button>
         </Stack>
