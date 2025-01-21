@@ -95,7 +95,7 @@ function VNavBar(props) {
                 component={Link}
                 href={item.path}
                 key={item.path}
-                sx={{ textTransform: "none" }}
+                sx={{ textTransform: "capitalize" }}
               >
                 {item.title}
               </Button>

@@ -57,7 +57,7 @@ export default function NavDrawer({
 // propstypes
 NavDrawer.propTypes = {
   handleChangeLang: PropTypes.func.isRequired,
-  locales: PropTypes.array.isRequired,
+  locales: PropTypes.object.isRequired,
   handleDrawerToggle: PropTypes.func.isRequired,
   navItems: PropTypes.arrayOf(
     PropTypes.shape({
