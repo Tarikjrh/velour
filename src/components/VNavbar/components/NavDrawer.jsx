@@ -9,11 +9,18 @@ import {
 } from "@mui/material";
 import Iconify from "../../iconify";
 import PropTypes from "prop-types";
+import OrderNow from "./Buttons/OrderNow";
+import Language from "./Buttons/Language";
 
-export default function NavDrawer({ handleDrawerToggle, navItems }) {
+export default function NavDrawer({
+  handleDrawerToggle,
+  navItems,
+  handleChangeLang,
+  locales,
+}) {
   return (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Box sx={{ backgroundColor: "#242824" }}>
+      <Box sx={{ backgroundColor: "#1f261e" }}>
         <img src={"logo.png"} width={"60%"} />
       </Box>
       <Divider />
@@ -22,12 +29,26 @@ export default function NavDrawer({ handleDrawerToggle, navItems }) {
           <ListItem key={item.path} disablePadding>
             <ListItemButton sx={{ textAlign: "start" }}>
               <ListItemIcon>
-                <Iconify icon="solar:bookmark-bold-duotone" />
+                <Iconify icon={item.icon} />
               </ListItemIcon>
-              <ListItemText primary={item.title} />
+              <ListItemText
+                primary={item.title}
+                sx={{ textTransform: "capitalize" }}
+              />
             </ListItemButton>
           </ListItem>
         ))}
+        <ListItem disablePadding>
+          <ListItemButton sx={{ textAlign: "start" }}>
+            <OrderNow />
+          </ListItemButton>
+        </ListItem>
+
+        <ListItem disablePadding>
+          <ListItemButton sx={{ textAlign: "start" }}>
+            <Language handleChangeLang={handleChangeLang} locales={locales} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   );
@@ -35,6 +56,8 @@ export default function NavDrawer({ handleDrawerToggle, navItems }) {
 
 // propstypes
 NavDrawer.propTypes = {
+  handleChangeLang: PropTypes.func.isRequired,
+  locales: PropTypes.array.isRequired,
   handleDrawerToggle: PropTypes.func.isRequired,
   navItems: PropTypes.arrayOf(
     PropTypes.shape({

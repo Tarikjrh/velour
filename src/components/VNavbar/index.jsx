@@ -8,6 +8,8 @@ import { Container, Link, Stack } from "@mui/material";
 import Iconify from "../iconify";
 import { useLocales } from "../../locales";
 import NavDrawer from "./components/NavDrawer";
+import OrderNow from "./components/Buttons/OrderNow";
+import Language from "./components/Buttons/Language";
 
 const drawerWidth = 240;
 
@@ -18,9 +20,13 @@ function VNavBar(props) {
   const { t } = useLocales();
 
   const navItems = [
-    { title: t("nav.about"), path: "about" },
-    { title: t("nav.catalog"), path: "catalog" },
-    { title: t("nav.contact"), path: "contact" },
+    { title: t("nav.about"), path: "about", icon: "ix:about" },
+    { title: t("nav.catalog"), path: "catalog", icon: "ic:baseline-menu-book" },
+    {
+      title: t("nav.contact"),
+      path: "contact",
+      icon: "grommet-icons:contact",
+    },
   ];
 
   const { window } = props;
@@ -91,18 +97,8 @@ function VNavBar(props) {
                 {item.title}
               </Button>
             ))}
-            <Button variant="contained">Order Now</Button>
-
-            <Button
-              startIcon={<Iconify icon="mdi:language" />}
-              onClick={() =>
-                handleChangeLang(
-                  locales.currentLang.value === "en" ? "ar" : "en"
-                )
-              }
-            >
-              {locales.currentLang.value === "en" ? "عربي" : "English"}
-            </Button>
+            <OrderNow />
+            <Language handleChangeLang={handleChangeLang} locales={locales} />
           </Box>
         </Stack>
       </Container>
@@ -127,6 +123,8 @@ function VNavBar(props) {
           <NavDrawer
             navItems={navItems}
             handleDrawerToggle={handleDrawerToggle}
+            handleChangeLang={handleChangeLang}
+            locales={locales}
           />
         </Drawer>
       </nav>
