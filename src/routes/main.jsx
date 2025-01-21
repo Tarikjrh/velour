@@ -5,6 +5,7 @@ import { Suspense } from "react";
 import SplashScreen from "../components/SplashScreen";
 import Page404 from "../pages/error/Page404";
 import SimpleLayout from "../layout/SimpleLayout";
+import ContactUs from "../views/ContactUs";
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +22,7 @@ export const mainRoutes = [
     ),
     children: [
       { path: "catalog", element: <Catalog /> },
+      { path: "contact", element: <ContactUs /> },
       { path: "configurator", element: <Configurator /> },
     ],
   },

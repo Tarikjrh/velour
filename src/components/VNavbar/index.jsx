@@ -10,14 +10,15 @@ import { useLocales } from "../../locales";
 import NavDrawer from "./components/NavDrawer";
 import OrderNow from "./components/Buttons/OrderNow";
 import Language from "./components/Buttons/Language";
+import { useLocation } from "react-router";
 
 const drawerWidth = 240;
 
 function VNavBar(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-
   const locales = useLocales();
   const { t } = useLocales();
+  const location = useLocation();
 
   const navItems = [
     { title: t("nav.about"), path: "about", icon: "ix:about" },
@@ -45,6 +46,8 @@ function VNavBar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
+  const landingPage = location.pathname === "/";
+
   return (
     <Box
       sx={{
@@ -52,10 +55,10 @@ function VNavBar(props) {
         zIndex: 2,
         width: "100%",
         pb: 1,
-        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backgroundColor: landingPage ? "rgba(0, 0, 0, 0.3)" : "#fff",
         backdropFilter: "blur(10px)", // Background blur
         WebkitBackdropFilter: "blur(10px)", // Safari support
-        color: "#fff",
+        color: landingPage ? "#fff" : "#000",
       }}
     >
       <Container>
