@@ -2,7 +2,7 @@ import { Navigate, useRoutes } from "react-router-dom";
 
 import LandingPage from "../views/LandingPage";
 import { mainRoutes } from "./main";
-import VNavBar from "../components/VNavbar";
+import SimpleLayout from "../layout/SimpleLayout";
 
 // ----------------------------------------------------------------------
 
@@ -11,10 +11,9 @@ export default function Router() {
     {
       path: "/",
       element: (
-        <>
-          <VNavBar />
+        <SimpleLayout>
           <LandingPage />
-        </>
+        </SimpleLayout>
       ),
     },
 
