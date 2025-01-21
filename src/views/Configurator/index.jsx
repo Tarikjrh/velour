@@ -1,10 +1,16 @@
-import { Box, Container, Stack, Typography } from "@mui/material";
+import { Box, Container, Grid, Grid2, Stack, Typography } from "@mui/material";
 import { useEffect, useRef, useState } from "react";
 import VBreadcrumbs from "../../components/VBreadcrumbs";
 import colors from "./utils/colors";
 import ItemTitle from "./components/ItemTitle";
 import * as fabric from "fabric";
 import ColorPickerSection from "./components/ColorPickerSection";
+import ProductDetailsCarousel from "./components/ProductDetailsCarousel";
+import productsData from "../Catalog/productsData";
+import SizesSection from "./components/SizesSection";
+import SizeGuide from "./components/SizeGuide";
+import CustomizationBtns from "./components/CustomizationBtns";
+import ShareProduct from "./components/ShareProduct";
 
 const Configurator = () => {
   const canvasRef = useRef(null);
@@ -15,9 +21,15 @@ const Configurator = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
 
   const title = "Woman's Crew T-shirt";
-  const description = `Premium back-view T-shirt with a classic crew neck and short
-            sleeves. Crafted from durable, comfortable fabric, perfect for
-            uniforms, branding, or promotional use.`;
+  const description = `Premium back-view T-shirt with a classic crew neck and short sleeves.`;
+
+  const paths = [
+    { label: "Catalog", url: "/catalog" },
+    { label: "Tops", url: "/configure" },
+    { label: title },
+  ];
+
+  const AvailableSizes = ["S", "M", "L", "XL"];
 
   useEffect(() => {
     const initCanvas = new fabric.Canvas("tshirt-canvas", {
@@ -102,94 +114,97 @@ const Configurator = () => {
       }}
       maxWidth={"lg"}
     >
-      <VBreadcrumbs sx={{ my: { xs: 4, md: 6 } }} />
+      <Stack direction={"row"} justifyContent={"space-between"}>
+        <VBreadcrumbs sx={{ my: { xs: 4, md: 6 } }} paths={paths} />
+        <ShareProduct />
+      </Stack>
 
-      <Stack direction={{ md: "row", xs: "column" }} spacing={2}>
-        <ItemTitle text={title} sx={{ display: { xs: "block", md: "none" } }} />
+      <ItemTitle text={title} sx={{ display: { xs: "block", md: "none" } }} />
 
-        <Box
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            position: "relative",
-          }}
-        >
+      <Grid container>
+        <Grid item xs={12} sm={6} sx={{ my: { xs: 4, md: 0 }, px: 4 }}>
           <Box
-            sx={{ width: { xs: "80%", md: "90%" } }}
-            ref={tshirtDivRef}
-            id="tshirt-div"
-          >
-            <img
-              id="tshirt-backgroundpicture"
-              src={selectedImg}
-              style={{ backgroundColor: selectedColor, width: "100%" }}
-            />
-          </Box>
-
-          <Box
-            className="drawing-area"
-            style={{
-              position: "absolute",
-              width: "100%",
-              height: "100%",
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              position: "relative",
             }}
           >
             <Box
-              className="canvas-container"
+              sx={{ width: { xs: "80%", md: "100%" } }}
+              ref={tshirtDivRef}
+              id="tshirt-div"
+            >
+              <ProductDetailsCarousel
+                product={productsData[0]}
+                selectedColor={selectedColor}
+                selectedImg={selectedImg}
+              />
+            </Box>
+
+            <Box
+              className="drawing-area"
               style={{
                 position: "absolute",
                 width: "100%",
-                height: "100%",
+                height: "85%",
               }}
             >
-              <canvas
+              <Box
+                className="canvas-container"
                 style={{
+                  position: "absolute",
                   width: "100%",
                   height: "100%",
-                  display: "block",
                 }}
-                id="tshirt-canvas"
-                ref={canvasRef}
-              ></canvas>
+              >
+                <canvas
+                  style={{
+                    width: "100%",
+                    height: "100%",
+                    display: "block",
+                  }}
+                  id="tshirt-canvas"
+                  ref={canvasRef}
+                ></canvas>
+              </Box>
             </Box>
           </Box>
-        </Box>
+        </Grid>
 
-        <Stack
-          sx={{ width: { xs: "100%", md: "50%" } }}
-          direction={"column"}
-          spacing={4}
-        >
-          <ItemTitle
-            text={title}
-            sx={{ display: { xs: "none", md: "block" } }}
-          />
-          <Typography
-            component={"h2"}
-            variant={"body1"}
-            sx={{
-              fontFamily: "Abril Fatface",
-              maxWidth: { md: "90%" },
-              fontSize: { xs: "16px", md: "24px" },
-            }}
-          >
-            {description}
-          </Typography>
+        <Grid item xs={12} sm={6} sx={{ px: 2 }}>
+          <Stack direction={"column"} spacing={4}>
+            <ItemTitle
+              text={title}
+              sx={{ display: { xs: "none", md: "block" } }}
+            />
+            <Typography
+              component={"h2"}
+              variant={"body1"}
+              sx={{
+                // fontFamily: "Abril Fatface",
+                maxWidth: { md: "90%" },
+                fontSize: { xs: "16px", md: "24px" },
+              }}
+            >
+              {description}
+            </Typography>
 
-          <ColorPickerSection
-            selectedColor={selectedColor}
-            onSelectColor={setSelectedColor}
-          />
-
-          <button onClick={addTextToCanvas}>Add Text</button>
-          <label htmlFor="tshirt-custompicture">Upload your own design:</label>
-          <input
-            type="file"
-            id="tshirt-custompicture"
-            onChange={handleCustomPictureUpload}
-          />
-        </Stack>
-      </Stack>
+            <ColorPickerSection
+              selectedColor={selectedColor}
+              onSelectColor={setSelectedColor}
+            />
+            {AvailableSizes && (
+              <SizesSection sizes={AvailableSizes} limit={9} />
+            )}
+            <SizeGuide />
+            <CustomizationBtns
+              onImgClick={handleCustomPictureUpload}
+              onTextClick={addTextToCanvas}
+            />
+          </Stack>
+        </Grid>
+      </Grid>
     </Container>
   );
 };
