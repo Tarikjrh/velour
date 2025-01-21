@@ -1,29 +1,29 @@
 import * as React from "react";
 import PropTypes from "prop-types";
 import Box from "@mui/material/Box";
-import CssBaseline from "@mui/material/CssBaseline";
-import Divider from "@mui/material/Divider";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
-import List from "@mui/material/List";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemText from "@mui/material/ListItemText";
 import Button from "@mui/material/Button";
-import { Container, Link, ListItemIcon, Stack } from "@mui/material";
+import { Container, Link, Stack } from "@mui/material";
 import Iconify from "../iconify";
 import { useLocales } from "../../locales";
+import NavDrawer from "./components/NavDrawer";
 
 const drawerWidth = 240;
 
 function VNavBar(props) {
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
   const locales = useLocales();
   const { t } = useLocales();
 
-  const navItems = [t("nav.about"), "Catalog", "Contact"];
+  const navItems = [
+    { title: t("nav.about"), path: "about" },
+    { title: t("nav.catalog"), path: "catalog" },
+    { title: t("nav.contact"), path: "contact" },
+  ];
 
   const { window } = props;
-  const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -36,34 +36,22 @@ function VNavBar(props) {
     [locales]
   );
 
-  const drawer = (
-    <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
-      <Box sx={{ backgroundColor: "#242824" }}>
-        <img src={"logo.png"} width={"60%"} />
-      </Box>
-      <Divider />
-      <List>
-        {navItems.map((item) => (
-          <ListItem key={item} disablePadding>
-            <ListItemButton sx={{ textAlign: "start" }}>
-              <ListItemIcon>
-                <Iconify icon="solar:bookmark-bold-duotone" />
-              </ListItemIcon>
-              <ListItemText primary={item} />
-            </ListItemButton>
-          </ListItem>
-        ))}
-      </List>
-    </Box>
-  );
-
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
   return (
-    <Box sx={{ display: "flex" }}>
-      <CssBaseline />
-
+    <Box
+      sx={{
+        position: "fixed",
+        zIndex: 2,
+        width: "100%",
+        pb: 1,
+        backgroundColor: "rgba(0, 0, 0, 0.3)",
+        backdropFilter: "blur(10px)", // Background blur
+        WebkitBackdropFilter: "blur(10px)", // Safari support
+        color: "#fff",
+      }}
+    >
       <Container>
         <Stack
           direction={"row"}
@@ -73,7 +61,7 @@ function VNavBar(props) {
           <Box
             component={Link}
             href="/"
-            sx={{ width: { xs: "20%", md: "84px" } }}
+            sx={{ width: { xs: "20%", sm: "80px", md: "84px" } }}
           >
             <img src={"logo2.png"} />
           </Box>
@@ -96,16 +84,14 @@ function VNavBar(props) {
             {navItems.map((item) => (
               <Button
                 component={Link}
-                href={item}
-                key={item}
-                sx={{ color: "#000", textTransform: "none" }}
+                href={item.path}
+                key={item.path}
+                sx={{ textTransform: "none" }}
               >
-                {item}
+                {item.title}
               </Button>
             ))}
-            <Button variant="contained" sx={{ backgroundColor: "#1E1E1E" }}>
-              Order Now
-            </Button>
+            <Button variant="contained">Order Now</Button>
 
             <Button
               startIcon={<Iconify icon="mdi:language" />}
@@ -138,7 +124,10 @@ function VNavBar(props) {
             },
           }}
         >
-          {drawer}
+          <NavDrawer
+            navItems={navItems}
+            handleDrawerToggle={handleDrawerToggle}
+          />
         </Drawer>
       </nav>
     </Box>
