@@ -16,11 +16,10 @@ import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import InputBase, { inputBaseClasses } from "@mui/material/InputBase";
-// components
 import Iconify from "../../../components/iconify";
+import Scrollbar from "../../../components/scrollbar";
 import ColorPicker from "../../../components/color-utils/color-picker";
-import { Box } from "@mui/material";
-// import Scrollbar from "../../../components/scrollbar";
+// components
 
 // ----------------------------------------------------------------------
 
@@ -267,7 +266,7 @@ export default function ProductFilters({
 
         <Divider />
 
-        <Box sx={{ px: 2.5, py: 3 }}>
+        <Scrollbar sx={{ px: 2.5, py: 3 }}>
           <Stack spacing={3}>
             {renderGender}
 
@@ -275,11 +274,11 @@ export default function ProductFilters({
 
             {renderColor}
 
-            {renderPrice}
+            {/* {renderPrice} */}
 
-            {renderRating}
+            {/* {renderRating} */}
           </Stack>
-        </Box>
+        </Scrollbar>
       </Drawer>
     </>
   );

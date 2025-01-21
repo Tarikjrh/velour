@@ -10,7 +10,6 @@ import { useDebounce } from "../../hooks/use-debounce";
 import { useBoolean } from "../../hooks/use-boolean";
 import EmptyContent from "../../components/EmptyContent";
 import ProductList from "./components/ProductList";
-import products from "./products";
 import ProductFilters from "./components/ProductFilters";
 import {
   PRODUCT_CATEGORY_OPTIONS,
@@ -22,6 +21,10 @@ import {
 import ProductSort from "./components/ProductSort";
 import ProductSearch from "./components/ProductSearch";
 import ProductFiltersResult from "./components/ProductFiltersResult";
+import { useSearchProducts } from "./utils/useSearchProducts";
+import { paths } from "../../routes/paths";
+import productsData from "./productsData";
+import { Box } from "@mui/material";
 
 // ----------------------------------------------------------------------
 
@@ -48,7 +51,7 @@ export default function ProductShopView() {
 
   const [filters, setFilters] = useState(defaultFilters);
 
-  // const { searchResults, searchLoading } = useSearchProducts(debouncedQuery);
+  const { searchResults, searchLoading } = useSearchProducts(debouncedQuery);
 
   const handleFilters = useCallback((name, value) => {
     setFilters((prevState) => ({
@@ -58,7 +61,7 @@ export default function ProductShopView() {
   }, []);
 
   const dataFiltered = applyFilter({
-    inputData: products,
+    inputData: productsData,
     filters,
     sortBy,
   });
@@ -87,11 +90,11 @@ export default function ProductShopView() {
       direction={{ xs: "column", sm: "row" }}
     >
       <ProductSearch
-      // query={debouncedQuery}
-      // results={searchResults}
-      // onSearch={handleSearch}
-      // loading={searchLoading}
-      // hrefItem={(id) => paths.product.details(id)}
+        query={debouncedQuery}
+        results={searchResults}
+        onSearch={handleSearch}
+        loading={searchLoading}
+        hrefItem={(id) => paths.product.details(id)}
       />
 
       <Stack direction="row" spacing={1} flexShrink={0}>
@@ -137,36 +140,38 @@ export default function ProductShopView() {
   );
 
   return (
-    <Container
-      maxWidth={"lg"}
-      sx={{
-        mb: 15,
-      }}
-    >
-      <Typography
-        variant="h4"
+    <Box sx={{ mt: 5 }}>
+      <Container
+        maxWidth={"lg"}
         sx={{
-          my: { xs: 3, md: 5 },
+          mb: 15,
         }}
       >
-        Catalog
-      </Typography>
+        <Typography
+          variant="h4"
+          sx={{
+            mb: { xs: 3, md: 5 },
+          }}
+        >
+          Catalog
+        </Typography>
 
-      <Stack
-        spacing={2.5}
-        sx={{
-          mb: { xs: 3, md: 5 },
-        }}
-      >
-        {renderFilters}
+        <Stack
+          spacing={2.5}
+          sx={{
+            mb: { xs: 3, md: 5 },
+          }}
+        >
+          {renderFilters}
 
-        {canReset && renderResults}
-      </Stack>
+          {canReset && renderResults}
+        </Stack>
 
-      {notFound && renderNotFound}
+        {notFound && renderNotFound}
 
-      <ProductList products={dataFiltered} loading={false} />
-    </Container>
+        <ProductList products={dataFiltered} loading={false} />
+      </Container>
+    </Box>
   );
 }
 

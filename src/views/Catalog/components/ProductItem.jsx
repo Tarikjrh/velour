@@ -36,25 +36,7 @@ export default function ProductItem({ product }) {
     saleLabel,
   } = product;
 
-  const linkTo = paths.product.details(id);
-
-  const handleAddCart = async () => {
-    const newProduct = {
-      id,
-      name,
-      coverUrl,
-      available,
-      price,
-      colors: [colors[0]],
-      size: sizes[0],
-      quantity: 1,
-    };
-    try {
-      // onAddToCart(newProduct);
-    } catch (error) {
-      console.error(error);
-    }
-  };
+  const linkTo = paths.catalog.details(id);
 
   const renderLabels = (newLabel.enabled || saleLabel.enabled) && (
     <Stack
@@ -78,29 +60,6 @@ export default function ProductItem({ product }) {
 
   const renderImg = (
     <Box sx={{ position: "relative", p: 1 }}>
-      {!!available && (
-        <Fab
-          color="warning"
-          size="medium"
-          className="add-cart-btn"
-          onClick={handleAddCart}
-          sx={{
-            right: 16,
-            bottom: 16,
-            zIndex: 9,
-            opacity: 0,
-            position: "absolute",
-            transition: (theme) =>
-              theme.transitions.create("all", {
-                easing: theme.transitions.easing.easeInOut,
-                duration: theme.transitions.duration.shorter,
-              }),
-          }}
-        >
-          <Iconify icon="solar:cart-plus-bold" width={24} />
-        </Fab>
-      )}
-
       <Tooltip title={!available && "Out of stock"} placement="bottom-end">
         <Image
           alt={name}
@@ -108,10 +67,10 @@ export default function ProductItem({ product }) {
           ratio="1/1"
           sx={{
             borderRadius: 1.5,
-            ...(!available && {
-              opacity: 0.48,
-              filter: "grayscale(1)",
-            }),
+            // ...(!available && {
+            //   opacity: 0.48,
+            //   filter: "grayscale(1)",
+            // }),
           }}
         />
       </Tooltip>
@@ -132,31 +91,12 @@ export default function ProductItem({ product }) {
 
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         <ColorPreview colors={colors} />
-
-        <Stack direction="row" spacing={0.5} sx={{ typography: "subtitle1" }}>
-          {priceSale && (
-            <Box
-              component="span"
-              sx={{ color: "text.disabled", textDecoration: "line-through" }}
-            >
-              {priceSale}
-            </Box>
-          )}
-
-          <Box component="span">{price}</Box>
-        </Stack>
       </Stack>
     </Stack>
   );
 
   return (
-    <Card
-      sx={{
-        "&:hover .add-cart-btn": {
-          opacity: 1,
-        },
-      }}
-    >
+    <Card component={Link} href={linkTo} sx={{}}>
       {renderLabels}
 
       {renderImg}
