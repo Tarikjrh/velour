@@ -6,7 +6,6 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import React from "react";
 import Iconify from "../iconify";
 
 export default function Footer() {
@@ -20,20 +19,30 @@ export default function Footer() {
     <Box sx={{ backgroundColor: "#1F261E", color: "#fff" }}>
       <Container>
         <Stack
-          direction={"row"}
+          direction={{ xs: "column", sm: "row" }}
           justifyContent={"space-between"}
           alignItems={"center"}
+          spacing={2}
         >
-          <Box sx={{ maxWidth: "15%" }}>
+          <Box sx={{ maxWidth: { xs: "50%", sm: "25%", md: "15%" } }}>
             <img src="/logo.png" width={"100%"} />
           </Box>
-          <Stack spacing={0.5}>
+          <Stack spacing={0.5} mb={{ xs: 5, sm: 0 }}>
             {details.map((detail, i) => {
-              return <Box key={i}>{detail}</Box>;
+              return (
+                <Typography
+                  sx={{ textAlign: { xs: "center", sm: "start" } }}
+                  key={i}
+                >
+                  {detail}
+                </Typography>
+              );
             })}
           </Stack>
           <Box>
-            <Typography>Follow us:</Typography>
+            <Typography sx={{ textAlign: { xs: "center", sm: "start" } }}>
+              Follow us:
+            </Typography>
             <Stack direction={"row"} mt={0.5}>
               {socialIcons.map((icon, i) => {
                 return (
