@@ -1,6 +1,7 @@
 import { Container, Stack, Typography } from "@mui/material";
 import Image from "../../../components/Image";
 import strengths_data from "../utils/strengths_data";
+import Scrollbar from "../../../components/scrollbar";
 
 export default function Strengths() {
   return (
@@ -12,30 +13,31 @@ export default function Strengths() {
       >
         Our Key Strengths
       </Typography>
-
-      <Stack
-        direction={"row"}
-        spacing={4}
-        sx={{ width: "130%", overflow: "hidden" }}
-      >
-        {strengths_data.map((item) => {
-          return (
-            <Stack key={item.title} spacing={2}>
-              <Image
-                src={item.img}
-                ratio="3/4"
-                sx={{ borderRadius: "20px", height: "100%" }}
-              />
-              <Stack>
-                <Typography variant="h5">{item.title}</Typography>
-                <Typography sx={{ color: "#8AA187" }}>
-                  {item.description}
-                </Typography>
+      <Scrollbar>
+        <Stack
+          direction={"row"}
+          spacing={4}
+          sx={{ width: "130%", overflow: "hidden" }}
+        >
+          {strengths_data.map((item) => {
+            return (
+              <Stack key={item.title} spacing={2}>
+                <Image
+                  src={item.img}
+                  ratio="3/4"
+                  sx={{ borderRadius: "20px", height: "100%" }}
+                />
+                <Stack>
+                  <Typography variant="h5">{item.title}</Typography>
+                  <Typography sx={{ color: "#8AA187" }}>
+                    {item.description}
+                  </Typography>
+                </Stack>
               </Stack>
-            </Stack>
-          );
-        })}
-      </Stack>
+            );
+          })}
+        </Stack>
+      </Scrollbar>
     </Container>
   );
 }

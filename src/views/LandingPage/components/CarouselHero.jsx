@@ -11,13 +11,13 @@ import CardContent from "@mui/material/CardContent";
 import { bgGradient } from "../../../theme/css";
 
 // components
-import Image from "../../../components/image";
 import { MotionContainer, varFade } from "../../../components/animate";
 import Carousel, {
   CarouselArrows,
   CarouselDots,
   useCarousel,
 } from "../../../components/carousel";
+import Image from "../../../components/Image";
 
 // ----------------------------------------------------------------------
 
