@@ -5,13 +5,13 @@ import Image from "../../../components/Image";
 export default function WhyVelour() {
   return (
     <Box sx={{ position: "relative" }}>
-      <Stack direction={"row"}>
+      <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={3}>
         <Stack
           spacing={3}
           direction={"column"}
           justifyContent="center"
           alignItems="flex-start"
-          sx={{ pl: 20 }}
+          sx={{ pl: { xs: 2, md: 20 } }}
         >
           <Typography variant="why_velour_title">
             {" "}
@@ -26,12 +26,16 @@ export default function WhyVelour() {
         <Box
           sx={{
             height: "100%",
-            width: "70%",
+            width: { xs: "100%", md: "100%", lg: "70%" },
             display: "flex",
             justifyContent: "flex-end",
           }}
         >
-          <Image src="/why_contact.png" sx={{ width: "80%" }} ratio="3/4" />
+          <Image
+            src="/why_contact.png"
+            sx={{ width: { xs: "100%", md: "80%" } }}
+            ratio="3/4"
+          />
         </Box>
       </Stack>
     </Box>
