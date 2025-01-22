@@ -4,13 +4,14 @@ import Box from "@mui/material/Box";
 import Drawer from "@mui/material/Drawer";
 import IconButton from "@mui/material/IconButton";
 import Button from "@mui/material/Button";
-import { Container, Link, Stack } from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import Iconify from "../iconify";
 import { useLocales } from "../../locales";
 import NavDrawer from "./components/NavDrawer";
 import OrderNow from "./components/Buttons/OrderNow";
 import Language from "./components/Buttons/Language";
 import { useLocation } from "react-router";
+import RouterLink from "../RouterLink";
 
 const drawerWidth = 240;
 
@@ -73,11 +74,11 @@ function VNavBar(props) {
           alignItems={"center"}
         >
           <Box
-            component={Link}
+            component={RouterLink}
             href="/"
             sx={{ width: { xs: "20%", sm: "80px", md: "84px" } }}
           >
-            <img src={"logo2.png"} />
+            <img src={"/logo2.svg"} />
           </Box>
 
           <IconButton
@@ -97,7 +98,7 @@ function VNavBar(props) {
           >
             {navItems.map((item) => (
               <Button
-                component={Link}
+                component={RouterLink}
                 href={item.path}
                 key={item.path}
                 sx={{ textTransform: "capitalize" }}
