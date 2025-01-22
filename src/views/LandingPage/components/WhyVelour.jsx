@@ -33,7 +33,11 @@ export default function WhyVelour() {
         >
           <Image
             src="/why_contact.png"
-            sx={{ width: { xs: "100%", md: "80%" } }}
+            sx={{
+              width: { xs: "100%", md: "80%" },
+              borderTopLeftRadius: "20px",
+              borderBottomLeftRadius: "20px",
+            }}
             ratio="3/4"
           />
         </Box>
