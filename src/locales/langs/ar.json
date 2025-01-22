@@ -1,3 +1,8 @@
 {
-  "nav": { "about": "عنّا", "contact": "اتّصل فينا", "catalog": "الكتالوج" }
+  "nav": {
+    "about": "عنّا",
+    "contact": "اتّصل فينا",
+    "catalog": "الكتالوج",
+    "collections": "collections"
+  }
 }
