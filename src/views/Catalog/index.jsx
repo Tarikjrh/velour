@@ -16,14 +16,15 @@ import {
   PRODUCT_COLOR_OPTIONS,
   PRODUCT_GENDER_OPTIONS,
   PRODUCT_SORT_OPTIONS,
-} from "./_product";
+} from "./utils/_product";
 import ProductSort from "./components/ProductSort";
 import ProductSearch from "./components/ProductSearch";
 import ProductFiltersResult from "./components/ProductFiltersResult";
 import { useSearchProducts } from "./utils/useSearchProducts";
 import { paths } from "../../routes/paths";
-import { Box } from "@mui/material";
-import productsData from "./ProductsData";
+import { Box, Button } from "@mui/material";
+import productsData from "./productsData";
+import Iconify from "../../components/iconify";
 
 // ----------------------------------------------------------------------
 
@@ -145,14 +146,26 @@ export default function ProductShopView() {
           mb: 15,
         }}
       >
-        <Typography
-          variant="h4"
-          sx={{
-            mb: { xs: 3, md: 5 },
-          }}
+        <Stack
+          direction="row"
+          justifyContent="space-between"
+          alignItems="center"
         >
-          Catalog
-        </Typography>
+          <Typography
+            variant="h4"
+            sx={{
+              mb: { xs: 3, md: 5 },
+            }}
+          >
+            Catalog
+          </Typography>
+          <Button
+            variant="contained"
+            startIcon={<Iconify icon="ic:baseline-menu-book" />}
+          >
+            Download Catalog
+          </Button>
+        </Stack>
 
         <Stack
           spacing={2.5}

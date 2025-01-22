@@ -24,6 +24,11 @@ function VNavBar(props) {
     { title: t("nav.about"), path: "about", icon: "ix:about" },
     { title: t("nav.catalog"), path: "catalog", icon: "ic:baseline-menu-book" },
     {
+      title: t("nav.collections"),
+      path: "collections",
+      icon: "fluent:collections-empty-20-filled",
+    },
+    {
       title: t("nav.contact"),
       path: "contact",
       icon: "grommet-icons:contact",
