@@ -3,8 +3,8 @@ const categories_data = [
   { img: "/categories/healthcare.png", title: "Healthcare" },
   { img: "/categories/education.png", title: "Education" },
   { img: "/categories/industrial.png", title: "Industrial/Workwear" },
-  { img: "/categories/transport.png", title: "Essentials" },
-  { img: "/categories/retail.png", title: "Accessories" },
+  { img: "/categories/essentials.png", title: "Essentials" },
+  { img: "/categories/accessories.png", title: "Accessories" },
 ];
 
 export default categories_data;
