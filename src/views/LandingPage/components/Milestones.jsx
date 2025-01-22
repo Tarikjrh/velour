@@ -1,8 +1,11 @@
 import { Box, Card, Container, Stack, Typography, Grid } from "@mui/material";
 import { useState } from "react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import useInView from "../../../hooks/use-in-view";
 
 export default function Milestones() {
+  const [ref, isInView] = useInView();
+
   const data = [
     { title: "Years of Experience", count: 10 },
     { title: "Happy Clients", count: 1000 },
@@ -11,7 +14,7 @@ export default function Milestones() {
   ];
 
   return (
-    <Box bgcolor={"#1F312D"} sx={{ py: 3 }}>
+    <Box ref={ref} bgcolor={"#1F312D"} sx={{ py: 3 }}>
       <Container>
         <Typography variant="h5" color="white" sx={{ mb: 2 }}>
           Company Milestones
@@ -33,7 +36,7 @@ export default function Milestones() {
                     <Typography variant="h6" color="#D6DDE6">
                       {title}
                     </Typography>
-                    <AnimatedNumber target={count} />
+                    <AnimatedNumber target={count} trigger={isInView} />
                   </Stack>
                 </Card>
               </Grid>
@@ -45,14 +48,14 @@ export default function Milestones() {
   );
 }
 
-function AnimatedNumber({ target }) {
+function AnimatedNumber({ target, trigger }) {
   const [currentValue, setCurrentValue] = useState(0);
 
   return (
     <LazyMotion features={domAnimation}>
       <m.div
         initial={{ value: 0 }}
-        animate={{ value: target }}
+        animate={trigger ? { value: target } : { value: 0 }}
         transition={{ duration: 1, ease: "easeOut" }}
         onUpdate={(latest) => setCurrentValue(Math.floor(latest.value))}
       />
