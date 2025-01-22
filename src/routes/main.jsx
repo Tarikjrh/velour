@@ -23,9 +23,14 @@ export const mainRoutes = [
     children: [
       { path: "catalog", element: <Catalog /> },
       { path: "contact", element: <ContactUs /> },
-      { path: "configurator", element: <Configurator /> },
+      {
+        path: "configurator",
+        element: <Configurator />,
+        children: [{ path: ":id", element: <Configurator /> }],
+      },
     ],
   },
+
   {
     element: (
       <Suspense fallback={<SplashScreen />}>
