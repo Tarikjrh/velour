@@ -26,7 +26,12 @@ const MyForm = () => {
 
             <Stack direction={"row"} spacing={2}>
               <RHFTextField name="email" label="Email" />
-              <RHFTextField name="date" label="Date" type={"date"} />
+              <RHFTextField
+                name="date"
+                label="Date"
+                type={"date"}
+                slotProps={{ inputLabel: { shrink: true } }}
+              />
             </Stack>
 
             <RHFTextField name="message" label="Message" rows={4} multiline />
