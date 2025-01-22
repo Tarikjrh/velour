@@ -16,7 +16,7 @@ export default function Footer() {
     { icon: "pajamas:twitter", link: "https://www.twitter.com" },
   ];
   return (
-    <Box sx={{ backgroundColor: "#1F261E", color: "#fff" }}>
+    <Box sx={{ backgroundColor: "#1F261E", color: "#fff", mt: 10 }}>
       <Container>
         <Stack
           direction={{ xs: "column", sm: "row" }}
