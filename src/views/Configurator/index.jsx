@@ -1,5 +1,5 @@
-import { Box, Container, Grid, Grid2, Stack, Typography } from "@mui/material";
-import { useEffect, useRef, useState } from "react";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { useEffect, useMemo, useRef, useState } from "react";
 import VBreadcrumbs from "../../components/VBreadcrumbs";
 import colors from "./utils/colors";
 import ItemTitle from "./components/ItemTitle";
@@ -11,34 +11,39 @@ import SizesSection from "./components/SizesSection";
 import SizeGuide from "./components/SizeGuide";
 import CustomizationBtns from "./components/CustomizationBtns";
 import ShareProduct from "./components/ShareProduct";
+import { useParams } from "react-router";
 
 const Configurator = () => {
+  const { id } = useParams();
+
   const canvasRef = useRef(null);
   const tshirtDivRef = useRef(null);
 
   const [canvas, setCanvas] = useState(null);
-  const [selectedImg, setSelectedImg] = useState("womens_crew_front.png");
   const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedProduct, setSelectedProduct] = useState(null);
 
-  const title = "Woman's Crew T-shirt";
-  const description = `Premium back-view T-shirt with a classic crew neck and short sleeves.`;
+  useEffect(() => {
+    const product = productsData.find((product) => product.id === id);
+    setSelectedProduct(product);
+  }, [id]);
 
-  const paths = [
-    { label: "Catalog", url: "/catalog" },
-    { label: "Tops", url: "/configure" },
-    { label: title },
-  ];
-
-  const AvailableSizes = ["S", "M", "L", "XL"];
+  const paths = useMemo(
+    () => [
+      { label: "Collections", url: "/collections" },
+      { label: selectedProduct?.collection, url: "/configure" },
+      { label: selectedProduct?.name },
+    ],
+    [selectedProduct]
+  );
 
   useEffect(() => {
     const initCanvas = new fabric.Canvas("tshirt-canvas", {
       preserveObjectStacking: true,
     });
     setCanvas(initCanvas);
-
     return () => initCanvas.dispose();
-  }, []);
+  }, [selectedProduct]);
 
   // Adjust the canvas size when the image is loaded
   const adjustCanvasSize = () => {
@@ -106,11 +111,20 @@ const Configurator = () => {
     canvas.renderAll();
   };
 
+  if (!selectedProduct) {
+    return (
+      <Container>
+        <Typography variant={"h4"}>Product not found</Typography>
+      </Container>
+    );
+  }
+
   return (
     <Container
       sx={{
         overflowX: { xs: "hidden", md: "visible" },
         backgroundColor: "#fff",
+        mb: 10,
       }}
       maxWidth={"lg"}
     >
@@ -119,7 +133,10 @@ const Configurator = () => {
         <ShareProduct />
       </Stack>
 
-      <ItemTitle text={title} sx={{ display: { xs: "block", md: "none" } }} />
+      <ItemTitle
+        text={selectedProduct?.name}
+        sx={{ display: { xs: "block", md: "none" } }}
+      />
 
       <Grid container>
         <Grid item xs={12} sm={6} sx={{ my: { xs: 4, md: 0 }, px: 4 }}>
@@ -130,15 +147,12 @@ const Configurator = () => {
               position: "relative",
             }}
           >
-            <Box
-              sx={{ width: { xs: "80%", md: "100%" } }}
-              ref={tshirtDivRef}
-              id="tshirt-div"
-            >
+            <Box sx={{ width: { xs: "80%", md: "100%" } }}>
               <ProductDetailsCarousel
-                product={productsData[0]}
+                ref={tshirtDivRef}
+                id="tshirt-div"
+                product={selectedProduct}
                 selectedColor={selectedColor}
-                selectedImg={selectedImg}
               />
             </Box>
 
@@ -175,29 +189,26 @@ const Configurator = () => {
         <Grid item xs={12} sm={6} sx={{ px: 2 }}>
           <Stack direction={"column"} spacing={4}>
             <ItemTitle
-              text={title}
+              text={selectedProduct?.name}
               sx={{ display: { xs: "none", md: "block" } }}
             />
-            <Typography
-              component={"h2"}
-              variant={"body1"}
-              sx={{
-                // fontFamily: "Abril Fatface",
-                maxWidth: { md: "90%" },
-                fontSize: { xs: "16px", md: "24px" },
-              }}
-            >
-              {description}
+
+            <Typography component={"h2"} variant={"body1"}>
+              {selectedProduct?.description}
             </Typography>
 
             <ColorPickerSection
+              colors={selectedProduct?.colors}
               selectedColor={selectedColor}
               onSelectColor={setSelectedColor}
             />
-            {AvailableSizes && (
-              <SizesSection sizes={AvailableSizes} limit={9} />
+
+            {selectedProduct?.sizes && (
+              <SizesSection sizes={selectedProduct?.sizes} limit={9} />
             )}
+
             <SizeGuide />
+
             <CustomizationBtns
               onImgClick={handleCustomPictureUpload}
               onTextClick={addTextToCanvas}
