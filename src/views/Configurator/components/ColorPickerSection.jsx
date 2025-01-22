@@ -1,8 +1,8 @@
 import { Stack, Typography } from "@mui/material";
 import ColorPicker from "../../../components/color-utils/color-picker";
-import colors from "../utils/colors";
+import PropTypes from "prop-types";
 
-const ColorPickerSection = ({ selectedColor, onSelectColor }) => (
+const ColorPickerSection = ({ selectedColor, onSelectColor, colors }) => (
   <Stack
     direction={"row"}
     sx={{ width: "100%" }}
@@ -22,3 +22,10 @@ const ColorPickerSection = ({ selectedColor, onSelectColor }) => (
 );
 
 export default ColorPickerSection;
+
+//prop types
+ColorPickerSection.propTypes = {
+  selectedColor: PropTypes.string,
+  onSelectColor: PropTypes.func,
+  colors: PropTypes.array,
+};
