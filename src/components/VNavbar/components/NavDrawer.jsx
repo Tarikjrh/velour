@@ -54,7 +54,6 @@ export default function NavDrawer({
   );
 }
 
-// propstypes
 NavDrawer.propTypes = {
   handleChangeLang: PropTypes.func.isRequired,
   locales: PropTypes.object.isRequired,
