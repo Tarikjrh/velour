@@ -36,7 +36,6 @@ export default function ProductFilters({
   //
   colorOptions,
   genderOptions,
-  ratingOptions,
   categoryOptions,
 }) {
   const marksLabel = [...Array(21)].map((_, index) => {
@@ -172,70 +171,6 @@ export default function ProductFilters({
     </Stack>
   );
 
-  const renderPrice = (
-    <Stack>
-      <Typography variant="subtitle2" sx={{ flexGrow: 1 }}>
-        Price
-      </Typography>
-
-      <Stack direction="row" spacing={5} sx={{ my: 2 }}>
-        <InputRange
-          type="min"
-          value={filters.priceRange}
-          onFilters={onFilters}
-        />
-        <InputRange
-          type="max"
-          value={filters.priceRange}
-          onFilters={onFilters}
-        />
-      </Stack>
-
-      <Slider
-        value={filters.priceRange}
-        onChange={handleFilterPriceRange}
-        step={10}
-        min={0}
-        max={200}
-        marks={marksLabel}
-        getAriaValueText={(value) => `$${value}`}
-        valueLabelFormat={(value) => `$${value}`}
-        sx={{
-          alignSelf: "center",
-          width: `calc(100% - 24px)`,
-        }}
-      />
-    </Stack>
-  );
-
-  const renderRating = (
-    <Stack spacing={2} alignItems="flex-start">
-      <Typography variant="subtitle2">Rating</Typography>
-
-      {ratingOptions.map((item, index) => (
-        <Stack
-          key={item}
-          direction="row"
-          onClick={() => handleFilterRating(item)}
-          sx={{
-            borderRadius: 1,
-            cursor: "pointer",
-            typography: "body2",
-            "&:hover": { opacity: 0.48 },
-            ...(filters.rating === item && {
-              pl: 0.5,
-              pr: 0.75,
-              py: 0.25,
-              bgcolor: "action.selected",
-            }),
-          }}
-        >
-          <Rating readOnly value={4 - index} sx={{ mr: 1 }} /> & Up
-        </Stack>
-      ))}
-    </Stack>
-  );
-
   return (
     <>
       <Button
@@ -273,10 +208,6 @@ export default function ProductFilters({
             {renderCategory}
 
             {renderColor}
-
-            {/* {renderPrice} */}
-
-            {/* {renderRating} */}
           </Stack>
         </Scrollbar>
       </Drawer>

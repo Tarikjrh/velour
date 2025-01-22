@@ -15,7 +15,6 @@ import {
   PRODUCT_CATEGORY_OPTIONS,
   PRODUCT_COLOR_OPTIONS,
   PRODUCT_GENDER_OPTIONS,
-  PRODUCT_RATING_OPTIONS,
   PRODUCT_SORT_OPTIONS,
 } from "./_product";
 import ProductSort from "./components/ProductSort";
@@ -23,8 +22,8 @@ import ProductSearch from "./components/ProductSearch";
 import ProductFiltersResult from "./components/ProductFiltersResult";
 import { useSearchProducts } from "./utils/useSearchProducts";
 import { paths } from "../../routes/paths";
-import productsData from "./productsData";
 import { Box } from "@mui/material";
+import productsData from "./ProductsData";
 
 // ----------------------------------------------------------------------
 
@@ -109,7 +108,6 @@ export default function ProductShopView() {
           canReset={canReset}
           onResetFilters={handleResetFilters}
           colorOptions={PRODUCT_COLOR_OPTIONS}
-          ratingOptions={PRODUCT_RATING_OPTIONS}
           genderOptions={PRODUCT_GENDER_OPTIONS}
           categoryOptions={["all", ...PRODUCT_CATEGORY_OPTIONS]}
         />

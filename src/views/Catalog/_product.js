@@ -6,13 +6,13 @@ export const PRODUCT_GENDER_OPTIONS = [
   { label: "Kids", value: "Kids" },
 ];
 
-export const PRODUCT_CATEGORY_OPTIONS = ["Shose", "Apparel", "Accessories"];
-
-export const PRODUCT_RATING_OPTIONS = [
-  "up4Star",
-  "up3Star",
-  "up2Star",
-  "up1Star",
+export const PRODUCT_CATEGORY_OPTIONS = [
+  "Accessories",
+  "Hats",
+  "Shoes",
+  "T-shirts",
+  "Polo Shirts",
+  "Scrubs",
 ];
 
 export const PRODUCT_COLOR_OPTIONS = [
@@ -49,23 +49,6 @@ export const PRODUCT_SIZE_OPTIONS = [
   { value: "11.5", label: "11.5" },
   { value: "12", label: "12" },
   { value: "13", label: "13" },
-];
-
-export const PRODUCT_STOCK_OPTIONS = [
-  { value: "in stock", label: "In stock" },
-  { value: "low stock", label: "Low stock" },
-  { value: "out of stock", label: "Out of stock" },
-];
-
-export const PRODUCT_PUBLISH_OPTIONS = [
-  {
-    value: "published",
-    label: "Published",
-  },
-  {
-    value: "draft",
-    label: "Draft",
-  },
 ];
 
 export const PRODUCT_SORT_OPTIONS = [
