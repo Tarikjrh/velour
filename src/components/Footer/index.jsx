@@ -25,7 +25,7 @@ export default function Footer() {
           spacing={2}
         >
           <Box sx={{ maxWidth: { xs: "50%", sm: "25%", md: "15%" } }}>
-            <img src="/logo.png" width={"100%"} />
+            <img src="/logo.svg" width={"100%"} />
           </Box>
           <Stack spacing={0.5} mb={{ xs: 5, sm: 0 }}>
             {details.map((detail, i) => {
