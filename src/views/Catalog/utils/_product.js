@@ -10,7 +10,7 @@ export const PRODUCT_CATEGORY_OPTIONS = [
   "Accessories",
   "Hats",
   "Shoes",
-  "T-shirts",
+  "T-Shirts",
   "Polo Shirts",
   "Scrubs",
 ];
@@ -61,7 +61,7 @@ export const PRODUCT_SORT_OPTIONS = [
 export const PRODUCT_CATEGORY_GROUP_OPTIONS = [
   {
     group: "Clothing",
-    classify: ["Shirts", "T-shirts", "Jeans", "Leather", "Accessories"],
+    classify: ["Shirts", "T-Shirts", "Jeans", "Leather", "Accessories"],
   },
   {
     group: "Tailored",

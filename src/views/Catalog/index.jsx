@@ -214,11 +214,17 @@ function applyFilter({ inputData, filters, sortBy }) {
 
   // FILTERS
   if (gender.length) {
-    inputData = inputData.filter((product) => gender.includes(product.gender));
+    inputData = inputData.filter((product) =>
+      product.gender.some((g) => gender.includes(g))
+    );
   }
 
   if (category !== "all") {
-    inputData = inputData.filter((product) => product.category === category);
+    inputData = inputData.filter((product) =>
+      product.category.some(
+        (cat) => cat.toLowerCase() === category.toLowerCase()
+      )
+    );
   }
 
   if (colors.length) {

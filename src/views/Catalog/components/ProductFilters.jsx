@@ -1,24 +1,20 @@
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 // @mui
-import { alpha } from "@mui/material/styles";
 import Radio from "@mui/material/Radio";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import Drawer from "@mui/material/Drawer";
-import Rating from "@mui/material/Rating";
 import Button from "@mui/material/Button";
-import Slider from "@mui/material/Slider";
 import Divider from "@mui/material/Divider";
 import Tooltip from "@mui/material/Tooltip";
-import Checkbox from "@mui/material/Checkbox";
 import IconButton from "@mui/material/IconButton";
 import Typography from "@mui/material/Typography";
 import FormControlLabel from "@mui/material/FormControlLabel";
-import InputBase, { inputBaseClasses } from "@mui/material/InputBase";
 import Iconify from "../../../components/iconify";
 import Scrollbar from "../../../components/scrollbar";
 import ColorPicker from "../../../components/color-utils/color-picker";
+import { Checkbox } from "@mui/material";
 // components
 
 // ----------------------------------------------------------------------
@@ -38,17 +34,6 @@ export default function ProductFilters({
   genderOptions,
   categoryOptions,
 }) {
-  const marksLabel = [...Array(21)].map((_, index) => {
-    const value = index * 10;
-
-    const firstValue = index === 0 ? `$${value}` : `${value}`;
-
-    return {
-      value,
-      label: index % 4 ? "" : firstValue,
-    };
-  });
-
   const handleFilterGender = useCallback(
     (newValue) => {
       const checked = filters.gender.includes(newValue)
@@ -69,20 +54,6 @@ export default function ProductFilters({
   const handleFilterColors = useCallback(
     (newValue) => {
       onFilters("colors", newValue);
-    },
-    [onFilters]
-  );
-
-  const handleFilterPriceRange = useCallback(
-    (event, newValue) => {
-      onFilters("priceRange", newValue);
-    },
-    [onFilters]
-  );
-
-  const handleFilterRating = useCallback(
-    (newValue) => {
-      onFilters("rating", newValue);
     },
     [onFilters]
   );
@@ -230,80 +201,3 @@ ProductFilters.propTypes = {
 };
 
 // ----------------------------------------------------------------------
-
-function InputRange({ type, value, onFilters }) {
-  const min = value[0];
-
-  const max = value[1];
-
-  const handleBlurInputRange = useCallback(() => {
-    if (min < 0) {
-      onFilters("priceRange", [0, max]);
-    }
-    if (min > 200) {
-      onFilters("priceRange", [200, max]);
-    }
-    if (max < 0) {
-      onFilters("priceRange", [min, 0]);
-    }
-    if (max > 200) {
-      onFilters("priceRange", [min, 200]);
-    }
-  }, [max, min, onFilters]);
-
-  return (
-    <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      sx={{ width: 1 }}
-    >
-      <Typography
-        variant="caption"
-        sx={{
-          flexShrink: 0,
-          color: "text.disabled",
-          textTransform: "capitalize",
-          fontWeight: "fontWeightSemiBold",
-        }}
-      >
-        {`${type} ($)`}
-      </Typography>
-
-      <InputBase
-        fullWidth
-        value={type === "min" ? min : max}
-        onChange={(event) =>
-          type === "min"
-            ? onFilters("priceRange", [Number(event.target.value), max])
-            : onFilters("priceRange", [min, Number(event.target.value)])
-        }
-        onBlur={handleBlurInputRange}
-        inputProps={{
-          step: 10,
-          min: 0,
-          max: 200,
-          type: "number",
-          "aria-labelledby": "input-slider",
-        }}
-        sx={{
-          maxWidth: 48,
-          borderRadius: 0.75,
-          bgcolor: (theme) => alpha(theme.palette.grey[500], 0.08),
-          [`& .${inputBaseClasses.input}`]: {
-            pr: 1,
-            py: 0.75,
-            textAlign: "right",
-            typography: "body2",
-          },
-        }}
-      />
-    </Stack>
-  );
-}
-
-InputRange.propTypes = {
-  onFilters: PropTypes.func,
-  type: PropTypes.oneOf(["min", "max"]),
-  value: PropTypes.arrayOf(PropTypes.number),
-};
