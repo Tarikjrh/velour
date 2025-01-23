@@ -1,6 +1,6 @@
 import { Container, Grid, Link, Stack, Typography } from "@mui/material";
 import Image from "../../../components/Image";
-import productsData from "../../Catalog/ProductsData";
+import productsData from "../../Catalog/productsData";
 import ColorPreview from "../../../components/color-utils/color-preview";
 import { paths } from "../../../routes/paths";
 
