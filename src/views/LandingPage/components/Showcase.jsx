@@ -1,4 +1,11 @@
-import { Container, Grid, Link, Stack, Typography } from "@mui/material";
+import {
+  Button,
+  Container,
+  Grid,
+  Link,
+  Stack,
+  Typography,
+} from "@mui/material";
 import Image from "../../../components/Image";
 import productsData from "../../Catalog/productsData";
 import ColorPreview from "../../../components/color-utils/color-preview";
@@ -14,7 +21,7 @@ export default function Showcase() {
           <Grid
             key={product.id}
             item
-            xs={12}
+            xs={6}
             md={3}
             component={Link}
             href={paths.catalog.details(product.id)}
@@ -37,7 +44,7 @@ export default function Showcase() {
         ))}
         <Grid
           item
-          xs={12}
+          xs={6}
           md={3}
           component={Link}
           href={paths.catalog.details(extraProduct.id)}
@@ -55,6 +62,15 @@ export default function Showcase() {
           </Stack>
         </Grid>
       </Grid>
+      <Link
+        href={paths.catalog.root}
+        underline="none"
+        sx={{ display: "flex", justifyContent: "center", mt: 2 }}
+      >
+        <Button variant="contained" sx={{ mt: 2 }}>
+          View All
+        </Button>
+      </Link>
     </Container>
   );
 }
