@@ -22,10 +22,10 @@ import ProductFiltersResult from "./components/ProductFiltersResult";
 import { useSearchProducts } from "./utils/useSearchProducts";
 import { paths } from "../../routes/paths";
 import { Box, Button } from "@mui/material";
-import productsData from "./productsData";
 import Iconify from "../../components/iconify";
 import applyFilter from "./utils/applyFilter";
 import CollectionTabs from "./components/CollectionTabs";
+import productsData from "../../productsData";
 
 // ----------------------------------------------------------------------
 
@@ -34,6 +34,7 @@ const defaultFilters = {
   colors: [],
   rating: "",
   category: "all",
+  collection: "",
   priceRange: [0, 200],
 };
 
@@ -147,7 +148,10 @@ export default function ProductShopView() {
           mb: 15,
         }}
       >
-        <CollectionTabs />
+        <CollectionTabs
+          onFilters={handleFilters}
+          onResetFilters={handleResetFilters}
+        />
         <Stack
           direction="row"
           justifyContent="space-between"

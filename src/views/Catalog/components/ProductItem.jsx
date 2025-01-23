@@ -60,20 +60,20 @@ export default function ProductItem({ product }) {
 
   const renderImg = (
     <Box sx={{ position: "relative", p: 1 }}>
-      <Tooltip title={!available && "Out of stock"} placement="bottom-end">
-        <Image
-          alt={name}
-          src={coverUrl}
-          ratio="1/1"
-          sx={{
-            borderRadius: 1.5,
-            // ...(!available && {
-            //   opacity: 0.48,
-            //   filter: "grayscale(1)",
-            // }),
-          }}
-        />
-      </Tooltip>
+      {/* <Tooltip title={!available && "Out of stock"} placement="bottom-end"> */}
+      <Image
+        alt={name}
+        src={coverUrl}
+        ratio="1/1"
+        sx={{
+          borderRadius: 1.5,
+          // ...(!available && {
+          //   opacity: 0.48,
+          //   filter: "grayscale(1)",
+          // }),
+        }}
+      />
+      {/* </Tooltip> */}
     </Box>
   );
 
@@ -90,7 +90,7 @@ export default function ProductItem({ product }) {
       </Link>
 
       <Stack direction="row" alignItems="center" justifyContent="space-between">
-        <ColorPreview colors={colors} />
+        {colors && <ColorPreview colors={colors} />}
       </Stack>
     </Stack>
   );

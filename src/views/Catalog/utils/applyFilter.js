@@ -1,7 +1,7 @@
 import orderBy from "lodash/orderBy";
 
 function applyFilter({ inputData, filters, sortBy }) {
-  const { gender, category, colors, priceRange, rating } = filters;
+  const { gender, category, colors, priceRange, rating, collection } = filters;
 
   const min = priceRange[0];
 
@@ -36,6 +36,12 @@ function applyFilter({ inputData, filters, sortBy }) {
       product.category.some(
         (cat) => cat.toLowerCase() === category.toLowerCase()
       )
+    );
+  }
+
+  if (collection !== "") {
+    inputData = inputData.filter(
+      (product) => product.collection === collection
     );
   }
 

@@ -131,12 +131,14 @@ const ProductDetailsCarousel = React.forwardRef(
           ))}
         </Carousel>
 
-        <CarouselArrowIndex
-          index={carouselLarge.currentIndex}
-          total={slides.length}
-          onNext={carouselThumb.onNext}
-          onPrev={carouselThumb.onPrev}
-        />
+        {slides.length > 1 && (
+          <CarouselArrowIndex
+            index={carouselLarge.currentIndex}
+            total={slides.length}
+            onNext={carouselThumb.onNext}
+            onPrev={carouselThumb.onPrev}
+          />
+        )}
       </Box>
     );
 
@@ -181,7 +183,7 @@ const ProductDetailsCarousel = React.forwardRef(
       >
         {renderLargeImg}
 
-        {renderThumbnails}
+        {slides.length > 1 && renderThumbnails}
 
         {/* <Lightbox
         index={lightbox.selected}

@@ -1,8 +1,13 @@
 import React, { useState } from "react";
-import { Stack, Tooltip, IconButton, Snackbar, Box } from "@mui/material";
-// import { saveAs } from "file-saver";
+import {
+  Stack,
+  Tooltip,
+  IconButton,
+  Snackbar,
+  Box,
+  SnackbarContent,
+} from "@mui/material";
 import Iconify from "../../../components/iconify";
-// import QRCode from "qrcode";
 
 const ShareProduct = () => {
   const [snackbarOpen, setSnackbarOpen] = useState(false);
@@ -12,14 +17,6 @@ const ShareProduct = () => {
       setSnackbarOpen(true);
     });
   };
-
-  //   const handleDownloadQrCode = () => {
-  //     const url = window.location.href;
-  //     QRCode.toDataURL(url, { width: 300, margin: 2 }, (err, url) => {
-  //       if (err) return console.error(err);
-  //       saveAs(url, "qrcode.png");
-  //     });
-  //   };
 
   const handleCloseSnackbar = () => {
     setSnackbarOpen(false);
@@ -45,8 +42,20 @@ const ShareProduct = () => {
         open={snackbarOpen}
         autoHideDuration={3000}
         onClose={handleCloseSnackbar}
-        message="Link copied to clipboard!"
-      />
+      >
+        <SnackbarContent
+          message={
+            <span style={{ display: "flex", alignItems: "center" }}>
+              Link copied to clipboard!
+              <Iconify icon="solar:copy-bold-duotone" />
+            </span>
+          }
+          sx={{
+            backgroundColor: "primary.main", // Customize the background color here
+            color: "#ffffff", // Customize the text color here
+          }}
+        />
+      </Snackbar>
     </Stack>
   );
 };

@@ -5,21 +5,30 @@ import Box from "@mui/material/Box";
 import { Stack, Typography } from "@mui/material";
 import categories_data from "../../LandingPage/utils/categories_data";
 
-export default function CollectionTabs() {
+export default function CollectionTabs({ onFilters, onResetFilters }) {
   const [value, setValue] = React.useState(null);
 
   const handleChange = (event, newValue) => {
     if (newValue === value) {
       return;
     }
+    handleFilterCollection(newValue);
     setValue(newValue);
   };
 
   const handleClick = (event) => {
     if (event.target.innerHTML === value) {
       setValue(null);
+      onResetFilters("collection");
     }
   };
+
+  const handleFilterCollection = React.useCallback(
+    (newValue) => {
+      onFilters("collection", newValue);
+    },
+    [onFilters]
+  );
 
   return (
     <Box sx={{ width: "100%", mb: 3 }}>

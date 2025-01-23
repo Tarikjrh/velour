@@ -1,4 +1,4 @@
-import { Box, Container, Grid, Stack, Typography } from "@mui/material";
+import { Alert, Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import VBreadcrumbs from "../../components/VBreadcrumbs";
 import colors from "./utils/colors";
@@ -6,12 +6,12 @@ import ItemTitle from "./components/ItemTitle";
 import * as fabric from "fabric";
 import ColorPickerSection from "./components/ColorPickerSection";
 import ProductDetailsCarousel from "./components/ProductDetailsCarousel";
-import productsData from "../Catalog/productsData";
 import SizesSection from "./components/SizesSection";
 import SizeGuide from "./components/SizeGuide";
 import CustomizationBtns from "./components/CustomizationBtns";
 import ShareProduct from "./components/ShareProduct";
 import { useParams } from "react-router";
+import productsData from "../../productsData";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -197,12 +197,17 @@ const Configurator = () => {
               {selectedProduct?.description}
             </Typography>
 
-            <ColorPickerSection
-              colors={selectedProduct?.colors}
-              selectedColor={selectedColor}
-              onSelectColor={setSelectedColor}
-            />
+            {selectedProduct?.message && (
+              <Alert severity="info">{selectedProduct?.message}</Alert>
+            )}
 
+            {selectedProduct?.colors && (
+              <ColorPickerSection
+                colors={selectedProduct?.colors}
+                selectedColor={selectedColor}
+                onSelectColor={setSelectedColor}
+              />
+            )}
             {selectedProduct?.sizes && (
               <SizesSection sizes={selectedProduct?.sizes} limit={9} />
             )}

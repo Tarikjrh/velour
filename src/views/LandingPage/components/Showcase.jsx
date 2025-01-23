@@ -7,12 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 import Image from "../../../components/Image";
-import productsData from "../../Catalog/productsData";
 import ColorPreview from "../../../components/color-utils/color-preview";
 import { paths } from "../../../routes/paths";
+import productsData from "../../../productsData";
 
 export default function Showcase() {
-  const extraProduct = productsData[0];
   return (
     <Container>
       <Typography variant="section_title">Showcase</Typography>
@@ -37,30 +36,11 @@ export default function Showcase() {
                 <Typography variant="body1" sx={{ textDecoration: "none" }}>
                   {product.name}
                 </Typography>
-                <ColorPreview colors={product.colors} />
+                {product?.colors && <ColorPreview colors={product?.colors} />}
               </Stack>
             </Stack>
           </Grid>
         ))}
-        <Grid
-          item
-          xs={6}
-          md={3}
-          component={Link}
-          href={paths.catalog.details(extraProduct.id)}
-        >
-          <Stack spacing={2}>
-            <Image src={extraProduct.coverUrl} sx={{ borderRadius: "20px" }} />
-            <Stack
-              direction={"row"}
-              justifyContent={"space-between"}
-              alignItems={"center"}
-            >
-              <Typography variant="body1">{extraProduct.name}</Typography>
-              <ColorPreview colors={extraProduct.colors} />
-            </Stack>
-          </Stack>
-        </Grid>
       </Grid>
       <Link
         href={paths.catalog.root}

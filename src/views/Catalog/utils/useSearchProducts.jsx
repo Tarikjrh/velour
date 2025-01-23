@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from "react";
-import productsData from "../productsData";
+import productsData from "../../../productsData";
 
 // ----------------------------------------------------------------------
 
