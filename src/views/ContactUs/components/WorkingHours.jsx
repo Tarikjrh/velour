@@ -35,7 +35,7 @@ export default function WorkingHours() {
       </Typography>
 
       <TableContainer component={Paper} sx={{ my: 5 }}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table sx={{}} aria-label="simple table">
           <TableHead>
             <TableRow>
               <TableCell>Day </TableCell>

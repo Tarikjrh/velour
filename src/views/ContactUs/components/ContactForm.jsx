@@ -18,7 +18,7 @@ const MyForm = () => {
 
       <FormProvider {...methods}>
         <form onSubmit={methods.handleSubmit(onSubmit)}>
-          <Stack spacing={2} sx={{ px: 20, mt: 5 }}>
+          <Stack spacing={2} sx={{ px: { xs: 0, md: 20 }, mt: 5 }}>
             <Stack direction={"row"} spacing={2}>
               <RHFTextField name="name" label="Name" />
               <RHFTextField name="company" label="Company Name (Optional)" />
