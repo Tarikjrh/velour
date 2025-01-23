@@ -11,6 +11,7 @@ import Iconify from "../../iconify";
 import PropTypes from "prop-types";
 import OrderNow from "./Buttons/OrderNow";
 import Language from "./Buttons/Language";
+import RouterLink from "../../RouterLink";
 
 export default function NavDrawer({
   handleDrawerToggle,
@@ -27,7 +28,11 @@ export default function NavDrawer({
       <List>
         {navItems.map((item) => (
           <ListItem key={item.path} disablePadding>
-            <ListItemButton sx={{ textAlign: "start" }}>
+            <ListItemButton
+              sx={{ textAlign: "start" }}
+              component={RouterLink}
+              to={item.path}
+            >
               <ListItemIcon>
                 <Iconify icon={item.icon} />
               </ListItemIcon>
