@@ -1,6 +1,7 @@
 import { Box, Button, Stack, Typography } from "@mui/material";
-import React from "react";
 import Image from "../../../components/Image";
+import RouterLink from "../../../components/RouterLink";
+import { paths } from "../../../routes/paths";
 
 export default function WhyVelour() {
   return (
@@ -21,7 +22,13 @@ export default function WhyVelour() {
             With over 10 years of experience, we offer unparalleled quality and
             sustainable fabrics, trusted by over 100 clients worldwide.
           </Typography>
-          <Button variant="contained">Contact Us</Button>
+          <Button
+            variant="contained"
+            component={RouterLink}
+            href={paths.contact_us.root}
+          >
+            Contact Us
+          </Button>
         </Stack>
         <Box
           sx={{

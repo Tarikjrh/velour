@@ -1,6 +1,7 @@
 import { Box, Button, Container, Grid, Link, Typography } from "@mui/material";
 import Image from "../../../components/Image";
 import categories_data from "../utils/categories_data";
+import { paths } from "../../../routes/paths";
 
 export default function UniformsGrid() {
   return (
@@ -49,7 +50,7 @@ export default function UniformsGrid() {
           </Grid>
         ))}
       </Grid>
-      <Link href="/catalog" underline="none">
+      <Link href={paths.catalog.root} underline="none">
         <Button variant="contained" sx={{ mt: 2 }}>
           View All
         </Button>
