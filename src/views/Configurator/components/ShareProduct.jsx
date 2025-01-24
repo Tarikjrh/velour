@@ -23,7 +23,7 @@ const ShareProduct = () => {
   };
 
   return (
-    <Stack direction={"row"} p={2}>
+    <Stack direction={"row"} p={{ md: 2 }}>
       <Box>
         <Tooltip title="Share Link">
           <IconButton onClick={handleShareLink}>
@@ -31,11 +31,11 @@ const ShareProduct = () => {
           </IconButton>
         </Tooltip>
 
-        <Tooltip title="Download Qr Code">
+        {/* <Tooltip title="Download Qr Code">
           <IconButton onClick={() => {}}>
             <Iconify icon="ri:qr-code-fill" />
           </IconButton>
-        </Tooltip>
+        </Tooltip> */}
       </Box>
 
       <Snackbar

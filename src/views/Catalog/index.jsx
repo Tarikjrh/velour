@@ -96,7 +96,7 @@ export default function ProductShopView() {
         results={searchResults}
         onSearch={handleSearch}
         loading={searchLoading}
-        hrefItem={(id) => paths.product.details(id)}
+        hrefItem={(id) => paths.catalog.details(id)}
       />
 
       <Stack direction="row" spacing={1} flexShrink={0}>
@@ -156,15 +156,11 @@ export default function ProductShopView() {
           direction="row"
           justifyContent="space-between"
           alignItems="center"
+          sx={{
+            mb: { xs: 3, md: 5 },
+          }}
         >
-          <Typography
-            variant="h4"
-            sx={{
-              mb: { xs: 3, md: 5 },
-            }}
-          >
-            Catalog
-          </Typography>
+          <Typography variant="h4">Catalog</Typography>
           <Button
             variant="contained"
             startIcon={<Iconify icon="ic:baseline-menu-book" />}

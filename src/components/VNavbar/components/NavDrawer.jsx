@@ -22,7 +22,7 @@ export default function NavDrawer({
   return (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: "center" }}>
       <Box sx={{ backgroundColor: "#1f261e" }}>
-        <img src={"logo.svg"} width={"60%"} />
+        <img src={"/logo.svg"} width={"60%"} />
       </Box>
       <Divider />
       <List>

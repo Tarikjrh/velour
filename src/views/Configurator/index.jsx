@@ -30,8 +30,8 @@ const Configurator = () => {
 
   const paths = useMemo(
     () => [
-      { label: "Collections", url: "/collections" },
-      { label: selectedProduct?.collection, url: "/configure" },
+      { label: "Collections", url: "/catalog" },
+      { label: selectedProduct?.collection, url: "/catalog" },
       { label: selectedProduct?.name },
     ],
     [selectedProduct]
@@ -128,7 +128,11 @@ const Configurator = () => {
       }}
       maxWidth={"lg"}
     >
-      <Stack direction={"row"} justifyContent={"space-between"}>
+      <Stack
+        direction={"row"}
+        justifyContent={"space-between"}
+        alignItems={"center"}
+      >
         <VBreadcrumbs sx={{ my: { xs: 4, md: 6 } }} paths={paths} />
         <ShareProduct />
       </Stack>
@@ -139,7 +143,7 @@ const Configurator = () => {
       />
 
       <Grid container>
-        <Grid item xs={12} sm={6} sx={{ my: { xs: 4, md: 0 }, px: 4 }}>
+        <Grid item xs={12} sm={6} sx={{ my: { xs: 4, md: 0 }, px: { md: 4 } }}>
           <Box
             sx={{
               display: "flex",
@@ -147,7 +151,7 @@ const Configurator = () => {
               position: "relative",
             }}
           >
-            <Box sx={{ width: { xs: "80%", md: "100%" } }}>
+            <Box sx={{ width: { xs: "100%", md: "100%" } }}>
               <ProductDetailsCarousel
                 ref={tshirtDivRef}
                 id="tshirt-div"
