@@ -12,11 +12,11 @@ const productsData = [
     options: [
       {
         type: "pockets",
-        variants: ["Pocket", "No Pocket"],
+        variants: [{ name: "Pocket" }, { name: "No Pocket" }],
       },
       {
         type: "buttons",
-        variants: ["Button", "Zipper"],
+        variants: [{ name: "Button" }, { name: "Zipper" }],
       },
     ],
     tags: [
@@ -88,56 +88,6 @@ const productsData = [
     saleLabel: { enabled: false, content: "" },
   },
   {
-    id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e7223",
-    gender: ["Men", "Woman"],
-    category: ["Caps"],
-    collection: "Healthcare",
-    sizes: ["One Size"],
-    images: ["/products/healthcare/surgical_gown.jpeg"],
-    tags: [
-      "Nursing Caps",
-      "Headwear",
-      "Comfort",
-      "Hygiene",
-      "Medical Accessories",
-      "Breathable",
-    ],
-    description:
-      "Stay comfortable and hygienic with our nursing caps. These caps are perfect for healthcare professionals, featuring breathable materials and adjustable designs for all-day wear.",
-    name: "Surgical Gown",
-    coverUrl: "/products/healthcare/surgical_gown.jpeg",
-    subDescription:
-      "Hygienic and comfortable nursing caps designed for healthcare professionals.",
-    colors: ["#FFFFFF", "#2196F3", "#008000", "#00BCD4"],
-    newLabel: { enabled: false, content: "" },
-    saleLabel: { enabled: false, content: "" },
-  },
-  {
-    id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e7212",
-    gender: ["Men", "Woman"],
-    category: ["Caps"],
-    collection: "Healthcare",
-    sizes: ["One Size"],
-    images: ["/products/healthcare/patient_gowns.jpeg"],
-    tags: [
-      "Nursing Caps",
-      "Headwear",
-      "Comfort",
-      "Hygiene",
-      "Medical Accessories",
-      "Breathable",
-    ],
-    description:
-      "Stay comfortable and hygienic with our nursing caps. These caps are perfect for healthcare professionals, featuring breathable materials and adjustable designs for all-day wear.",
-    name: "Patient Gowns",
-    coverUrl: "/products/healthcare/patient_gowns.jpeg",
-    subDescription:
-      "Hygienic and comfortable nursing caps designed for healthcare professionals.",
-    colors: ["#FFFFFF", "#2196F3", "#008000", "#00BCD4"],
-    newLabel: { enabled: false, content: "" },
-    saleLabel: { enabled: false, content: "" },
-  },
-  {
     id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e72d5",
     gender: ["Men", "Woman"],
     category: ["Scrubs"],
@@ -170,6 +120,57 @@ const productsData = [
     coverUrl: "/products/healthcare/scrubs1.png",
     subDescription: "Durable and comfortable scrubs for medical staff.",
     colors: ["#FFFFFF", "#000000", "#008000"],
+    newLabel: { enabled: false, content: "" },
+    saleLabel: { enabled: false, content: "" },
+  },
+  {
+    id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e7212",
+    gender: ["Men", "Woman"],
+    category: ["Caps"],
+    collection: "Healthcare",
+    sizes: ["One Size"],
+    images: ["/products/healthcare/patient_gowns.jpeg"],
+    tags: [
+      "Nursing Caps",
+      "Headwear",
+      "Comfort",
+      "Hygiene",
+      "Medical Accessories",
+      "Breathable",
+    ],
+    description:
+      "Stay comfortable and hygienic with our nursing caps. These caps are perfect for healthcare professionals, featuring breathable materials and adjustable designs for all-day wear.",
+    name: "Patient Gowns",
+    coverUrl: "/products/healthcare/patient_gowns.jpeg",
+    subDescription:
+      "Hygienic and comfortable nursing caps designed for healthcare professionals.",
+    colors: ["#FFFFFF", "#2196F3", "#008000", "#00BCD4"],
+    newLabel: { enabled: false, content: "" },
+    saleLabel: { enabled: false, content: "" },
+  },
+
+  {
+    id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e7223",
+    gender: ["Men", "Woman"],
+    category: ["Caps"],
+    collection: "Healthcare",
+    sizes: ["One Size"],
+    images: ["/products/healthcare/surgical_gown.jpeg"],
+    tags: [
+      "Nursing Caps",
+      "Headwear",
+      "Comfort",
+      "Hygiene",
+      "Medical Accessories",
+      "Breathable",
+    ],
+    description:
+      "Stay comfortable and hygienic with our nursing caps. These caps are perfect for healthcare professionals, featuring breathable materials and adjustable designs for all-day wear.",
+    name: "Surgical Gown",
+    coverUrl: "/products/healthcare/surgical_gown.jpeg",
+    subDescription:
+      "Hygienic and comfortable nursing caps designed for healthcare professionals.",
+    colors: ["#FFFFFF", "#2196F3", "#008000", "#00BCD4"],
     newLabel: { enabled: false, content: "" },
     saleLabel: { enabled: false, content: "" },
   },

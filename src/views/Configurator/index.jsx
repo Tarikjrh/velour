@@ -12,6 +12,7 @@ import CustomizationBtns from "./components/CustomizationBtns";
 import ShareProduct from "./components/ShareProduct";
 import { useParams } from "react-router";
 import productsData from "../../productsData";
+import DisplayOptions from "./components/DisplayOptions";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -222,6 +223,9 @@ const Configurator = () => {
               onImgClick={handleCustomPictureUpload}
               onTextClick={addTextToCanvas}
             />
+            {selectedProduct?.options && (
+              <DisplayOptions options={selectedProduct?.options} />
+            )}
           </Stack>
         </Grid>
       </Grid>

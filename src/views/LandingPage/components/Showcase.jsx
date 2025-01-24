@@ -16,7 +16,7 @@ export default function Showcase() {
     <Container>
       <Typography variant="section_title">Showcase</Typography>
       <Grid container spacing={3} sx={{ my: 1 }}>
-        {productsData.map((product) => (
+        {productsData.slice(0, 4).map((product) => (
           <Grid
             key={product.id}
             item
