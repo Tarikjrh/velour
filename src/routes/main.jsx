@@ -6,6 +6,7 @@ import SplashScreen from "../components/SplashScreen";
 import Page404 from "../pages/error/Page404";
 import SimpleLayout from "../layout/SimpleLayout";
 import ContactUs from "../views/ContactUs";
+import AboutUs from "../views/AboutUs";
 
 // ----------------------------------------------------------------------
 
@@ -21,6 +22,7 @@ export const mainRoutes = [
       </SimpleLayout>
     ),
     children: [
+      { path: "about", element: <AboutUs /> },
       { path: "catalog", element: <Catalog /> },
       { path: "catalog/:id", element: <Catalog /> },
       { path: "contact", element: <ContactUs /> },
