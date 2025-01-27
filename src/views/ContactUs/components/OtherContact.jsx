@@ -18,7 +18,7 @@ export default function OtherContact() {
         alignItems="center"
         direction={{ xs: "column", md: "row" }}
       >
-        <Box sx={{ width: "100%" }}>
+        <Box sx={{ width: { xs: "100%", md: "50%" } }}>
           <Image
             src="contact_phone.png"
             style={{ transform: themeDirection == "ltr" ? null : "scaleX(-1)" }}
@@ -27,8 +27,9 @@ export default function OtherContact() {
         <Box sx={{ pl: { xs: 4, md: 10 } }}>
           <Typography variant="h4">Other Ways to Reach Us</Typography>
           <Typography variant="h4">
-            123 Velour Lane, Beirut, Lebanon. Phone: +961 123 4567 Email:
-            info@velouruniforms.com
+            123 Velour Lane, Beirut, Lebanon. <br />
+            Phone: +961 123 4567 <br />
+            Email: info@velouruniforms.com
           </Typography>
         </Box>
       </Stack>
