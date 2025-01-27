@@ -26,6 +26,7 @@ import Iconify from "../../components/iconify";
 import applyFilter from "./utils/applyFilter";
 import CollectionTabs from "./components/CollectionTabs";
 import productsData from "../../productsData";
+import NotFoundProduct from "../../components/NotFoundProduct";
 
 // ----------------------------------------------------------------------
 
@@ -184,6 +185,7 @@ export default function ProductShopView() {
 
         <ProductList products={dataFiltered} loading={false} />
       </Container>
+      <NotFoundProduct />
     </Box>
   );
 }
