@@ -7,6 +7,7 @@ import Paper from "@mui/material/Paper";
 import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Iconify from "../../../components/iconify";
+import categories_data from "../../LandingPage/utils/categories_data";
 // components
 
 // ----------------------------------------------------------------------
@@ -28,6 +29,9 @@ export default function ProductFiltersResult({
 
   const handleRemoveCategory = () => {
     onFilters("category", "all");
+  };
+  const handleRemoveCollection = () => {
+    onFilters("collection", "");
   };
 
   const handleRemoveColor = (inputValue) => {
@@ -78,6 +82,19 @@ export default function ProductFiltersResult({
               size="small"
               label={filters.category}
               onDelete={handleRemoveCategory}
+            />
+          </Block>
+        )}
+
+        {filters.collection !== "" && (
+          <Block label="Collection:">
+            <Chip
+              size="small"
+              label={
+                categories_data.find((item) => item.id === filters.collection)
+                  ?.title
+              }
+              onDelete={handleRemoveCollection}
             />
           </Block>
         )}

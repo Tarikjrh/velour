@@ -16,9 +16,11 @@ export default function UniformsGrid() {
         Explore Our Wide Range of Uniforms
       </Typography>
       <Grid container spacing={3}>
-        {categories_data.map(({ title, img }) => (
-          <Grid item key={title} xs={12} md={4}>
+        {categories_data.map(({ title, img, id }) => (
+          <Grid item key={id} xs={12} md={4}>
             <Box
+              component={Link}
+              href={paths.catalog.collection(id)}
               style={{
                 height: "100%",
                 display: "flex",

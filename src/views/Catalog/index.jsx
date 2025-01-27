@@ -1,5 +1,5 @@
 import isEqual from "lodash/isEqual";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 // @mui
 import Stack from "@mui/material/Stack";
 import Container from "@mui/material/Container";
@@ -27,6 +27,7 @@ import applyFilter from "./utils/applyFilter";
 import CollectionTabs from "./components/CollectionTabs";
 import productsData from "../../productsData";
 import NotFoundProduct from "../../components/NotFoundProduct";
+import { useParams } from "react-router";
 
 // ----------------------------------------------------------------------
 
@@ -43,12 +44,14 @@ const defaultFilters = {
 
 export default function ProductShopView() {
   // const settings = useSettingsContext();
+  const { id: selectedCollectionId } = useParams();
 
   const openFilters = useBoolean();
 
   const [sortBy, setSortBy] = useState("featured");
 
   const [searchQuery, setSearchQuery] = useState("");
+  const [externalValue, setExternalValue] = useState(null);
 
   const debouncedQuery = useDebounce(searchQuery);
 
@@ -62,6 +65,14 @@ export default function ProductShopView() {
       [name]: value,
     }));
   }, []);
+
+  useEffect(() => {
+    if (selectedCollectionId) {
+      handleFilters("collection", selectedCollectionId);
+      setExternalValue(selectedCollectionId); // Replace with a valid category title
+    }
+    return () => {};
+  }, [selectedCollectionId]);
 
   const dataFiltered = applyFilter({
     inputData: productsData,
@@ -150,6 +161,7 @@ export default function ProductShopView() {
         }}
       >
         <CollectionTabs
+          externalValue={externalValue} // Pass value from parent to child
           onFilters={handleFilters}
           onResetFilters={handleResetFilters}
         />

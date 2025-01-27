@@ -5,8 +5,19 @@ import Box from "@mui/material/Box";
 import { Stack, Typography } from "@mui/material";
 import categories_data from "../../LandingPage/utils/categories_data";
 
-export default function CollectionTabs({ onFilters, onResetFilters }) {
+export default function CollectionTabs({
+  onFilters,
+  onResetFilters,
+  externalValue,
+}) {
   const [value, setValue] = React.useState(null);
+
+  // Update internal state when externalValue changes
+  React.useEffect(() => {
+    if (externalValue !== undefined && externalValue !== value) {
+      setValue(externalValue);
+    }
+  }, [externalValue]);
 
   const handleChange = (event, newValue) => {
     if (newValue === value) {
@@ -16,10 +27,13 @@ export default function CollectionTabs({ onFilters, onResetFilters }) {
     setValue(newValue);
   };
 
-  const handleClick = (event) => {
-    if (event.target.innerHTML === value) {
+  const handleClick = (e) => {
+    console.log("🚀 ~ handleClick ~ event:", e);
+
+    if (e === value) {
       setValue(null);
       onResetFilters("collection");
+      return;
     }
   };
 
@@ -53,15 +67,14 @@ export default function CollectionTabs({ onFilters, onResetFilters }) {
         >
           {categories_data.map((cat) => (
             <Tab
-              onClick={handleClick}
-              key={cat.title}
-              value={cat.title}
+              onClick={() => handleClick(cat.id)}
+              key={cat.id}
+              value={cat.id}
               label={cat.title}
               sx={{
                 backgroundImage:
-                  value === cat.title ? `url("${cat.img}")` : "none",
-                backgroundColor:
-                  value === cat.title ? "transparent" : "#e0e0e0", // Gray for unselected items
+                  value === cat.id ? `url("${cat.img}")` : "none",
+                backgroundColor: value === cat.id ? "transparent" : "#e0e0e0", // Gray for unselected items
                 backgroundSize: "cover",
                 backgroundPosition: "center",
                 color: "white",
@@ -72,10 +85,11 @@ export default function CollectionTabs({ onFilters, onResetFilters }) {
                 minWidth: 200,
                 borderRadius: 1,
                 transition: "all 0.3s ease",
-                filter: value === cat.title ? "none" : "grayscale(100%)", // Apply grayscale filter to unselected tabs
+                filter: value === cat.id ? "none" : "grayscale(100%)", // Apply grayscale filter to unselected tabs
               }}
             />
           ))}
+          {/* <Tab sx={{ display: "none" }} label="All" value={null} /> */}
         </Tabs>
       </Stack>
     </Box>

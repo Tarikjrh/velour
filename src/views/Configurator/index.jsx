@@ -13,6 +13,7 @@ import ShareProduct from "./components/ShareProduct";
 import { useParams } from "react-router";
 import productsData from "../../productsData";
 import DisplayOptions from "./components/DisplayOptions";
+import { paths } from "../../routes/paths";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -29,10 +30,13 @@ const Configurator = () => {
     setSelectedProduct(product);
   }, [id]);
 
-  const paths = useMemo(
+  const breadcrumb_paths = useMemo(
     () => [
-      { label: "Collections", url: "/catalog" },
-      { label: selectedProduct?.collection, url: "/catalog" },
+      { label: "Catalog", url: "/catalog" },
+      {
+        label: selectedProduct?.collection,
+        url: paths.catalog.collection(selectedProduct?.collection),
+      },
       { label: selectedProduct?.name },
     ],
     [selectedProduct]
@@ -134,7 +138,7 @@ const Configurator = () => {
         justifyContent={"space-between"}
         alignItems={"center"}
       >
-        <VBreadcrumbs sx={{ my: { xs: 4, md: 6 } }} paths={paths} />
+        <VBreadcrumbs sx={{ my: { xs: 4, md: 6 } }} paths={breadcrumb_paths} />
         <ShareProduct />
       </Stack>
 
