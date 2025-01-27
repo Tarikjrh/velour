@@ -4,12 +4,12 @@ const productsData = [
     gender: ["Men", "Woman"],
     category: ["Lab Coats"],
     collection: "Healthcare",
-    sizes: ["Long", "Short"],
     images: [
       "/products/healthcare/labcoat_1.png",
       "/products/healthcare/labcoat_2.png",
     ],
     options: [
+      { type: "length", variants: [{ name: "Long" }, { name: "Short" }] },
       {
         type: "pockets",
         variants: [{ name: "Pocket" }, { name: "No Pocket" }],
