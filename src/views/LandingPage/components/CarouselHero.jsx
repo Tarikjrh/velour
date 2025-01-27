@@ -100,11 +100,11 @@ function CarouselItem({ item, active }) {
             height: 1,
             position: "absolute",
 
-            ...bgGradient({
-              direction: "to top",
-              startColor: `${theme.palette.grey[900]} 0%`,
-              endColor: `${alpha(theme.palette.grey[900], 0)} 100%`,
-            }),
+            // ...bgGradient({
+            //   direction: "to top",
+            //   startColor: `${theme.palette.grey[900]} 0%`,
+            //   endColor: `${alpha(theme.palette.grey[900], 0)} 100%`,
+            // }),
           }}
         />
       )}
