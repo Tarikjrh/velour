@@ -215,6 +215,7 @@ const Configurator = () => {
                 colors={selectedProduct?.colors}
                 selectedColor={selectedColor}
                 onSelectColor={setSelectedColor}
+                showColorWheel={selectedProduct?.showColorWheel || true}
               />
             )}
             {selectedProduct?.sizes && (
