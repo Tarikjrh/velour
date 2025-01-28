@@ -1,11 +1,13 @@
 import { Box, Stack, Typography, useTheme } from "@mui/material";
-import React from "react";
 import Image from "../../../components/Image";
 import { useLocales } from "../../../locales";
+import storeDetails from "../../../utils/storeDetails";
 
 export default function OtherContact() {
   const { direction: themeDirection } = useTheme();
-  console.log("🚀 ~ OtherContact ~ theme:", themeDirection);
+
+  const { t } = useLocales();
+
   return (
     <Box
       sx={{
@@ -25,12 +27,20 @@ export default function OtherContact() {
           />
         </Box>
         <Box sx={{ pl: { xs: 4, md: 10 } }}>
-          <Typography variant="h4">Other Ways to Reach Us</Typography>
-          <Typography variant="h4">
-            123 Velour Lane, Beirut, Lebanon. <br />
-            Phone: +961 123 4567 <br />
-            Email: info@velouruniforms.com
-          </Typography>
+          <Typography variant="h4">{t("contact.other_contact")}</Typography>
+          {storeDetails.map((detail) => (
+            <>
+              {detail.key !== "name" && (
+                <Typography
+                  variant="h4"
+                  style={{ direction: "ltr" }}
+                  key={detail.key}
+                >
+                  {detail.value}
+                </Typography>
+              )}
+            </>
+          ))}
         </Box>
       </Stack>
     </Box>

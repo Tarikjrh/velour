@@ -8,16 +8,11 @@ import {
 } from "@mui/material";
 import Iconify from "../iconify";
 import useLocales from "../../locales/use-locales";
+import storeDetails, { socialIcons } from "../../utils/storeDetails";
 
 export default function Footer() {
   const { t } = useLocales();
 
-  const details = ["Beirut,Hamra", "76 345 234", "velour@gmail.com"];
-  const socialIcons = [
-    { icon: "iconoir:facebook", link: "https://www.facebook.com" },
-    { icon: "uil:instagram", link: "https://www.instagram.com" },
-    { icon: "pajamas:twitter", link: "https://www.twitter.com" },
-  ];
   return (
     <Box sx={{ backgroundColor: "#1F261E", color: "#fff", mt: 10 }}>
       <Container>
@@ -31,16 +26,19 @@ export default function Footer() {
             <img src="/logo.svg" width={"100%"} />
           </Box>
           <Stack spacing={0.5} mb={{ xs: 5, sm: 0 }}>
-            {details.map((detail, i) => {
+            {storeDetails.map((detail, i) => {
               return (
                 <Typography
+                  component={detail.type === "phone" ? Link : "div"}
+                  href={detail.type === "phone" ? `tel:${detail.value}` : ""}
                   style={{ direction: "ltr" }}
                   sx={{
+                    color: "#fff",
                     textAlign: { xs: "center", sm: "start" },
                   }}
                   key={i}
                 >
-                  {detail}
+                  {detail.value}
                 </Typography>
               );
             })}
