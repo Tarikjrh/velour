@@ -9,9 +9,9 @@ import {
 } from "@mui/material";
 import Iconify from "../../iconify";
 import PropTypes from "prop-types";
-import OrderNow from "./Buttons/OrderNow";
 import Language from "./Buttons/Language";
 import RouterLink from "../../RouterLink";
+import OrderNowDialog from "../../OrderNowDialog";
 
 export default function NavDrawer({
   handleDrawerToggle,
@@ -45,7 +45,7 @@ export default function NavDrawer({
         ))}
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "start" }}>
-            <OrderNow />
+            <OrderNowDialog />
           </ListItemButton>
         </ListItem>
 

@@ -8,10 +8,10 @@ import { Container, Stack } from "@mui/material";
 import Iconify from "../iconify";
 import { useLocales } from "../../locales";
 import NavDrawer from "./components/NavDrawer";
-import OrderNow from "./components/Buttons/OrderNow";
 import Language from "./components/Buttons/Language";
 import { useLocation } from "react-router";
 import RouterLink from "../RouterLink";
+import OrderNowDialog from "../OrderNowDialog";
 
 const drawerWidth = 240;
 
@@ -102,7 +102,7 @@ function VNavBar(props) {
                 {item.title}
               </Button>
             ))}
-            <OrderNow />
+            <OrderNowDialog />
             <Language handleChangeLang={handleChangeLang} locales={locales} />
           </Box>
         </Stack>
