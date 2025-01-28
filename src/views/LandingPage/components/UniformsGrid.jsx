@@ -2,8 +2,10 @@ import { Box, Button, Container, Grid, Link, Typography } from "@mui/material";
 import Image from "../../../components/Image";
 import categories_data from "../utils/categories_data";
 import { paths } from "../../../routes/paths";
+import { useLocales } from "../../../locales";
 
 export default function UniformsGrid() {
+  const { t } = useLocales();
   return (
     <Container
       sx={{
@@ -13,7 +15,7 @@ export default function UniformsGrid() {
       }}
     >
       <Typography variant="section_title" sx={{ mb: 5, textAlign: "center" }}>
-        Explore Our Wide Range of Uniforms
+        {t("categories.title")}
       </Typography>
       <Grid container spacing={3}>
         {categories_data.map(({ title, img, id }) => (
@@ -44,9 +46,10 @@ export default function UniformsGrid() {
                   textAlign: "center",
                   fontWeight: "light",
                   flex: 1,
+                  textTransform: "capitalize",
                 }}
               >
-                {title}
+                {t(`${title}`)}
               </Typography>
             </Box>
           </Grid>
@@ -54,7 +57,7 @@ export default function UniformsGrid() {
       </Grid>
       <Link href={paths.catalog.root} underline="none">
         <Button variant="contained" sx={{ mt: 2 }}>
-          View All
+          {t(`view_all`)}
         </Button>
       </Link>
     </Container>

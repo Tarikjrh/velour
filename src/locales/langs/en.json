@@ -3,6 +3,83 @@
     "about": "about",
     "contact": "contact us",
     "catalog": "catalog",
-    "collections": "collections"
+    "order_now": "Order Now"
+  },
+  "hero": {
+    "t1": "Velour: Excellence in Every Stitch!"
+  },
+  "strengths": {
+    "title": "Our Key Strengths",
+    "t1": "Premium Materials",
+    "d1": "Only the finest fabrics for ultimate comfort and durability.",
+    "t2": "Trusted by Leading Brands",
+    "d2": "Our uniforms are worn by top companies worldwide.",
+    "t3": "Innovation",
+    "d3": "We provide the best innovative products to our customers.",
+    "t4": "Sustainable Practices",
+    "d4": "Our uniforms are worn by top companies worldwide."
+  },
+  "customizable_uniforms": "Customizable, durable  <br /> uniforms for every <br /> industry.",
+  "categories": {
+    "title": "Explore Our Wide Range of Uniforms",
+    "corporate": "Corporate/Hospitality",
+    "healthcare": "Healthcare",
+    "education": "Education",
+    "industrial": "Industrial/Workwear",
+    "essentials": "Essentials",
+    "accessories": "Accessories"
+  },
+  "not_found": {
+    "title": "Can't find what you're looking for?",
+    "description": "If the item you're after isn't featured in our catalog, don't hesitate to reach out! Contact us, and we'll work with you to find the perfect solution. Your satisfaction is our priority, and we're here to help bring your vision to life."
+  },
+  "why_choose_velour": {
+    "title": "Designed Just for You",
+    "description": "At Velour we bring your vision to life with fully customizable options. From tailored designs and colors to functional details, every piece is crafted to perfectly align with your organization’s unique style and needs."
+  },
+  "showcase": "Showcase",
+
+  "view_all": "View All",
+  "contact_us": "Contact Us",
+  "catalog": "Catalog",
+  "download_catalog": "Download Catalog",
+  "collections": "Collections",
+  "search": "Search",
+  "search...": "Search...",
+  "results_found": "Results Found",
+  "gender": "Gender",
+  "size": "Size",
+  "colors": "Colors",
+  "category": "Category",
+  "collection": "Collection",
+  "price": "Price",
+  "sort_by": "Sort By",
+  "filter": "Filter",
+  "clear": "Clear",
+  "apply": "Apply",
+  "name": "Name",
+  "company": "Company(Optional)",
+  "date": "Date",
+  "products": "Products",
+  "email": "Email",
+  "message": "Message",
+  "submit": "Submit",
+  "monday": "Monday",
+  "tuesday": "Tuesday",
+  "wednesday": "Wednesday",
+  "thursday": "Thursday",
+  "friday": "Friday",
+  "saturday": "Saturday",
+  "sunday": "Sunday",
+  "holidays": "Holidays",
+  "closed": "Closed",
+  "day": "Day",
+  "follow_us": "Follow Us",
+
+  "contact": {
+    "title": " We’d Love to <br/>Hear From<br /> You!",
+    "send_us_a_message": "Send us a message",
+    "description": "Let us know how we can help or when you need your uniforms by.",
+    "working_hours": "Working Hours"
   }
 }

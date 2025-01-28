@@ -1,10 +1,14 @@
 import { useForm, FormProvider } from "react-hook-form";
-import { Avatar, Button, Chip, Stack } from "@mui/material";
+import { Button, Chip, Stack } from "@mui/material";
 import { RHFAutocomplete, RHFTextField } from "../hook-form";
 import productsData from "../../productsData";
 import { useMemo } from "react";
+import PropTypes from "prop-types";
+import useLocales from "../../locales/use-locales";
 
 const ContactForm = ({ onSubmit, sx }) => {
+  const { t } = useLocales();
+
   const defaultValues = useMemo(
     () => ({
       name: "",
@@ -24,15 +28,16 @@ const ContactForm = ({ onSubmit, sx }) => {
         <form onSubmit={methods.handleSubmit(onSubmit)}>
           <Stack spacing={2} sx={{ px: { xs: 0, md: 20 }, mt: 5, ...sx }}>
             <Stack direction={"row"} spacing={2}>
-              <RHFTextField name="name" label="Name" />
-              <RHFTextField name="company" label="Company Name (Optional)" />
+              <RHFTextField name="name" label={t("name")} />
+              <RHFTextField name="company" label={t("company")} />
             </Stack>
 
             <Stack direction={"row"} spacing={2}>
-              <RHFTextField name="email" label="Email" />
+              <RHFTextField name="email" label={t("email")} />
+
               <RHFTextField
                 name="date"
-                label="Date"
+                label={t("date")}
                 type={"date"}
                 slotProps={{ inputLabel: { shrink: true } }}
               />
@@ -41,7 +46,7 @@ const ContactForm = ({ onSubmit, sx }) => {
             <RHFAutocomplete
               disableCloseOnSelect
               name="products"
-              label="Products"
+              label={t("products")}
               placeholder="Products"
               multiple
               options={productsData.map((option) => option.name)}
@@ -65,10 +70,15 @@ const ContactForm = ({ onSubmit, sx }) => {
               }
             />
 
-            <RHFTextField name="message" label="Message" rows={4} multiline />
+            <RHFTextField
+              name="message"
+              label={t("message")}
+              rows={4}
+              multiline
+            />
 
             <Button variant="contained" type="submit">
-              Submit
+              {t("submit")}
             </Button>
           </Stack>
         </form>
@@ -78,3 +88,8 @@ const ContactForm = ({ onSubmit, sx }) => {
 };
 
 export default ContactForm;
+
+ContactForm.propTypes = {
+  onSubmit: PropTypes.func.isRequired,
+  sx: PropTypes.object,
+};

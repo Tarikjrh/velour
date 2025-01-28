@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Stack from "@mui/material/Stack";
 import Iconify from "../../../components/iconify";
 import categories_data from "../../LandingPage/utils/categories_data";
+import useLocales from "../../../locales/use-locales";
 // components
 
 // ----------------------------------------------------------------------
@@ -22,6 +23,8 @@ export default function ProductFiltersResult({
   results,
   ...other
 }) {
+  const { t } = useLocales();
+
   const handleRemoveGender = (inputValue) => {
     const newValue = filters.gender.filter((item) => item !== inputValue);
     onFilters("gender", newValue);
@@ -52,7 +55,7 @@ export default function ProductFiltersResult({
       <Box sx={{ typography: "body2" }}>
         <strong>{results}</strong>
         <Box component="span" sx={{ color: "text.secondary", ml: 0.25 }}>
-          results found
+          {t("results_found")}
         </Box>
       </Box>
 
@@ -64,7 +67,7 @@ export default function ProductFiltersResult({
         alignItems="center"
       >
         {!!filters.gender.length && (
-          <Block label="Gender:">
+          <Block label={`${t("gender")}:`}>
             {filters.gender.map((item) => (
               <Chip
                 key={item}
@@ -77,7 +80,7 @@ export default function ProductFiltersResult({
         )}
 
         {filters.category !== "all" && (
-          <Block label="Category:">
+          <Block label={`${t("category")}:`}>
             <Chip
               size="small"
               label={filters.category}
@@ -87,20 +90,22 @@ export default function ProductFiltersResult({
         )}
 
         {filters.collection !== "" && (
-          <Block label="Collection:">
+          <Block label={`${t("collection")}:`}>
             <Chip
               size="small"
-              label={
-                categories_data.find((item) => item.id === filters.collection)
-                  ?.title
-              }
+              label={t(
+                `${
+                  categories_data.find((item) => item.id === filters.collection)
+                    ?.title
+                }`
+              )}
               onDelete={handleRemoveCollection}
             />
           </Block>
         )}
 
         {!!filters.colors.length && (
-          <Block label="Colors:">
+          <Block label={`${t("colors")}:`}>
             {filters.colors.map((item) => (
               <Chip
                 key={item}
@@ -125,21 +130,11 @@ export default function ProductFiltersResult({
         )}
 
         {(filters.priceRange[0] !== 0 || filters.priceRange[1] !== 200) && (
-          <Block label="Price:">
+          <Block label={`${t("price")}:`}>
             <Chip
               size="small"
               label={`$${filters.priceRange[0]} - ${filters.priceRange[1]}`}
               onDelete={handleRemovePrice}
-            />
-          </Block>
-        )}
-
-        {!!filters.rating && (
-          <Block label="Rating:">
-            <Chip
-              size="small"
-              label={filters.rating}
-              onDelete={handleRemoveRating}
             />
           </Block>
         )}
@@ -150,7 +145,7 @@ export default function ProductFiltersResult({
             onClick={onResetFilters}
             startIcon={<Iconify icon="solar:trash-bin-trash-bold" />}
           >
-            Clear
+            {t("clear")}
           </Button>
         )}
       </Stack>

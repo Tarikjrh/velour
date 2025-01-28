@@ -11,8 +11,11 @@ import {
 import ContactForm from "../ContactForm";
 import Iconify from "../iconify";
 import CloseIcon from "@mui/icons-material/Close";
+import { useLocales } from "../../locales";
 
 const OrderNowDialog = () => {
+  const { t } = useLocales();
+
   const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
@@ -35,7 +38,7 @@ const OrderNowDialog = () => {
         variant="contained"
         startIcon={<Iconify icon="heroicons:shopping-bag" />}
       >
-        Order Now
+        {t("nav.order_now")}
       </Button>
       <Dialog
         open={open}
@@ -45,7 +48,7 @@ const OrderNowDialog = () => {
         keepMounted
       >
         <DialogTitle>
-          Send Us a Message
+          {t("contact.send_us_a_message")}
           <IconButton
             aria-label="close"
             onClick={handleClose}
@@ -58,9 +61,7 @@ const OrderNowDialog = () => {
           >
             <CloseIcon />
           </IconButton>
-          <Typography sx={{ mt: 2 }}>
-            Let us know how we can help or when you need your uniforms by.
-          </Typography>
+          <Typography sx={{ mt: 2 }}>{t("contact.description")}</Typography>
         </DialogTitle>
         <DialogContent>
           <ContactForm onSubmit={onSubmit} sx={{ px: 0 }} />

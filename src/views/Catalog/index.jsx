@@ -28,6 +28,7 @@ import CollectionTabs from "./components/CollectionTabs";
 import productsData from "../../productsData";
 import NotFoundProduct from "../../components/NotFoundProduct";
 import { useParams } from "react-router";
+import { useLocales } from "../../locales";
 
 // ----------------------------------------------------------------------
 
@@ -43,6 +44,7 @@ const defaultFilters = {
 // ----------------------------------------------------------------------
 
 export default function ProductShopView() {
+  const { t } = useLocales();
   // const settings = useSettingsContext();
   const { id: selectedCollectionId } = useParams();
 
@@ -173,12 +175,12 @@ export default function ProductShopView() {
             mb: { xs: 3, md: 5 },
           }}
         >
-          <Typography variant="h4">Catalog</Typography>
+          <Typography variant="h4">{t("catalog")}</Typography>
           <Button
             variant="contained"
             startIcon={<Iconify icon="ic:baseline-menu-book" />}
           >
-            Download Catalog
+            {t("download_catalog")}
           </Button>
         </Stack>
 

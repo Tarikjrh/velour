@@ -7,8 +7,11 @@ import {
   Typography,
 } from "@mui/material";
 import Iconify from "../iconify";
+import useLocales from "../../locales/use-locales";
 
 export default function Footer() {
+  const { t } = useLocales();
+
   const details = ["Beirut,Hamra", "76 345 234", "velour@gmail.com"];
   const socialIcons = [
     { icon: "iconoir:facebook", link: "https://www.facebook.com" },
@@ -31,7 +34,10 @@ export default function Footer() {
             {details.map((detail, i) => {
               return (
                 <Typography
-                  sx={{ textAlign: { xs: "center", sm: "start" } }}
+                  style={{ direction: "ltr" }}
+                  sx={{
+                    textAlign: { xs: "center", sm: "start" },
+                  }}
                   key={i}
                 >
                   {detail}
@@ -40,8 +46,8 @@ export default function Footer() {
             })}
           </Stack>
           <Box>
-            <Typography sx={{ textAlign: { xs: "center", sm: "start" } }}>
-              Follow us:
+            <Typography sx={{ textAlign: { xs: "center", sm: "left" } }}>
+              {t("follow_us")}:
             </Typography>
             <Stack direction={"row"} mt={0.5}>
               {socialIcons.map((icon, i) => {

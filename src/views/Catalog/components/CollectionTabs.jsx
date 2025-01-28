@@ -4,12 +4,14 @@ import Tab from "@mui/material/Tab";
 import Box from "@mui/material/Box";
 import { Stack, Typography } from "@mui/material";
 import categories_data from "../../LandingPage/utils/categories_data";
+import { useLocales } from "../../../locales";
 
 export default function CollectionTabs({
   onFilters,
   onResetFilters,
   externalValue,
 }) {
+  const { t } = useLocales();
   const [value, setValue] = React.useState(null);
 
   // Update internal state when externalValue changes
@@ -28,8 +30,6 @@ export default function CollectionTabs({
   };
 
   const handleClick = (e) => {
-    console.log("🚀 ~ handleClick ~ event:", e);
-
     if (e === value) {
       setValue(null);
       onResetFilters("collection");
@@ -47,7 +47,7 @@ export default function CollectionTabs({
   return (
     <Box sx={{ width: "100%", mb: 3 }}>
       <Typography variant="h4" sx={{ mb: 3 }}>
-        Collections
+        {t("collections")}
       </Typography>
 
       <Stack spacing={2} alignItems="center">
@@ -70,7 +70,7 @@ export default function CollectionTabs({
               onClick={() => handleClick(cat.id)}
               key={cat.id}
               value={cat.id}
-              label={cat.title}
+              label={t(cat.title)}
               sx={{
                 backgroundImage:
                   value === cat.id ? `url("${cat.img}")` : "none",

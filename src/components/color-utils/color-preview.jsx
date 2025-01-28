@@ -39,6 +39,7 @@ export default function ColorPreview({ colors, limit = 3, sx }) {
         <Box
           component="span"
           sx={{ typography: "subtitle2" }}
+          style={{ direction: "ltr" }}
         >{`+${remainingColor}`}</Box>
       )}
     </Stack>

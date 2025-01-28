@@ -1,6 +1,7 @@
 import { Box, Container, Typography } from "@mui/material";
 import React from "react";
 import Image from "../../../components/Image";
+import { Trans } from "react-i18next";
 
 export default function Customization() {
   return (
@@ -39,9 +40,7 @@ export default function Customization() {
             lineHeight: "1",
           }}
         >
-          Customizable, durable
-          <br /> uniforms for every <br />
-          industry.
+          <Trans i18nKey="customizable_uniforms"></Trans>
         </Typography>
       </Container>
     </Box>

@@ -18,6 +18,7 @@ import Carousel, {
   useCarousel,
 } from "../../../components/carousel";
 import Image from "../../../components/Image";
+import useLocales from "../../../locales/use-locales";
 
 // ----------------------------------------------------------------------
 
@@ -69,6 +70,8 @@ CarouselHero.propTypes = {
 // ----------------------------------------------------------------------
 
 function CarouselItem({ item, active }) {
+  const { t } = useLocales();
+
   const theme = useTheme();
 
   const { coverUrl, title } = item;
@@ -124,7 +127,7 @@ function CarouselItem({ item, active }) {
       >
         <m.div variants={variants}>
           <Typography variant="h3" gutterBottom>
-            {item.title}
+            {t(`${item.title}`)}
           </Typography>
         </m.div>
 

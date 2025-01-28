@@ -13,6 +13,7 @@ import Autocomplete, { autocompleteClasses } from "@mui/material/Autocomplete";
 import { useRouter } from "../../../routes/hooks/use-router";
 import Iconify from "../../../components/iconify";
 import SearchNotFound from "../../../components/SearchNotFound";
+import { useLocales } from "../../../locales";
 
 // ----------------------------------------------------------------------
 
@@ -24,6 +25,7 @@ export default function ProductSearch({
   loading,
 }) {
   const router = useRouter();
+  const { t } = useLocales();
 
   const handleClick = (id) => {
     router.push(hrefItem(id));
@@ -70,7 +72,7 @@ export default function ProductSearch({
       renderInput={(params) => (
         <TextField
           {...params}
-          placeholder="Search..."
+          placeholder={t("search...")}
           onKeyUp={handleKeyUp}
           InputProps={{
             ...params.InputProps,

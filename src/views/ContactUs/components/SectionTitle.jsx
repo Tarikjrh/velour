@@ -1,5 +1,6 @@
 import { Box, Container, Typography } from "@mui/material";
 import Image from "../../../components/Image";
+import { Trans } from "react-i18next";
 
 export default function SectionTitle() {
   return (
@@ -33,9 +34,7 @@ export default function SectionTitle() {
               p: 2,
             }}
           >
-            We’d Love to <br />
-            Hear From
-            <br /> You!
+            <Trans i18nKey="contact.title">.</Trans>
           </Typography>
         </Box>
       </Box>

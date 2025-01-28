@@ -1,22 +1,22 @@
 const strengths_data = [
   {
-    title: "Premium Materials",
-    description: "Only the finest fabrics for ultimate comfort and durability.",
+    title: "strengths.t1",
+    description: "strengths.d1",
     img: "/strengths/materials.jpg",
   },
   {
-    title: "Trusted by Leading Brands",
-    description: "Our uniforms are worn by top companies worldwide.",
+    title: "strengths.t2",
+    description: "strengths.d2",
     img: "/strengths/trust.jpg",
   },
   {
-    title: "Innovation",
-    description: "We provide the best innovative products to our customers.",
+    title: "strengths.t3",
+    description: "strengths.d3",
     img: "/strengths/innovation.png",
   },
   {
-    title: "Sustainable Practices",
-    description: "Our uniforms are worn by top companies worldwide.",
+    title: "strengths.t4",
+    description: "strengths.d4",
     img: "/strengths/sustainable.png",
   },
   // {

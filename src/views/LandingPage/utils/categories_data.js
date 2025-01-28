@@ -2,20 +2,32 @@ const categories_data = [
   {
     id: "corporate_hospitality",
     img: "/categories/corporate.png",
-    title: "Corporate/Hospitality",
+    title: "categories.corporate",
   },
-  { id: "Healthcare", img: "/categories/healthcare.png", title: "Healthcare" },
-  { id: "Education", img: "/categories/education.png", title: "Education" },
+  {
+    id: "Healthcare",
+    img: "/categories/healthcare.png",
+    title: "categories.healthcare",
+  },
+  {
+    id: "Education",
+    img: "/categories/education.png",
+    title: "categories.education",
+  },
   {
     id: "Industrial-Workwear",
     img: "/categories/industrial.png",
-    title: "Industrial/Workwear",
+    title: "categories.industrial",
   },
-  { id: "Essentials", img: "/categories/essentials.png", title: "Essentials" },
+  {
+    id: "Essentials",
+    img: "/categories/essentials.png",
+    title: "categories.essentials",
+  },
   {
     id: "Accessories",
     img: "/categories/accessories.png",
-    title: "Accessories",
+    title: "categories.accessories",
   },
 ];
 

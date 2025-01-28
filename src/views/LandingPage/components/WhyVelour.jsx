@@ -2,8 +2,10 @@ import { Box, Button, Stack, Typography } from "@mui/material";
 import Image from "../../../components/Image";
 import RouterLink from "../../../components/RouterLink";
 import { paths } from "../../../routes/paths";
+import { useLocales } from "../../../locales";
 
 export default function WhyVelour() {
+  const { t } = useLocales();
   return (
     <Box sx={{ position: "relative" }}>
       <Stack direction={{ xs: "column-reverse", md: "row" }} spacing={3}>
@@ -15,19 +17,17 @@ export default function WhyVelour() {
           sx={{ pl: { xs: 2, md: 20 } }}
         >
           <Typography variant="why_velour_title">
-            {" "}
-            Why choose velour?
+            {t("why_choose_velour.title")}
           </Typography>
           <Typography variant="why_velour_description" sx={{ maxWidth: "80%" }}>
-            With over 10 years of experience, we offer unparalleled quality and
-            sustainable fabrics, trusted by over 100 clients worldwide.
+            {t("why_choose_velour.description")}
           </Typography>
           <Button
             variant="contained"
             component={RouterLink}
             href={paths.contact_us.root}
           >
-            Contact Us
+            {t("contact_us")}
           </Button>
         </Stack>
         <Box

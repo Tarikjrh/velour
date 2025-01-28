@@ -1,14 +1,10 @@
 const carousel_data = [
   {
     id: "e99f09a7-dd88-49d5-b1c8-1daf80c2d7b1",
-    title: "Uniforms Designed for Excellence, Tailored for You.",
+    title: "hero.t1",
     coverUrl: "/landing-car-1.png",
   },
-  {
-    id: "e99f09a7-dd88-49d5-b1c8-1daf80c2d7b2",
-    title: "The Ultimate Guide to Productivity Hacks",
-    coverUrl: "/landing-car-1.png",
-  },
+
   {
     id: "e99f09a7-dd88-49d5-b1c8-1daf80c2d7b3",
     title: "Exploring the Hidden Gems of [Destination]",

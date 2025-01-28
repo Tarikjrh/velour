@@ -10,11 +10,13 @@ import Image from "../../../components/Image";
 import ColorPreview from "../../../components/color-utils/color-preview";
 import { paths } from "../../../routes/paths";
 import productsData from "../../../productsData";
+import { useLocales } from "../../../locales";
 
 export default function Showcase() {
+  const { t } = useLocales();
   return (
     <Container>
-      <Typography variant="section_title">Showcase</Typography>
+      <Typography variant="section_title">{t("showcase")}</Typography>
       <Grid container spacing={3} sx={{ my: 1 }}>
         {productsData.slice(0, 4).map((product) => (
           <Grid
@@ -48,7 +50,7 @@ export default function Showcase() {
         sx={{ display: "flex", justifyContent: "center", mt: 2 }}
       >
         <Button variant="contained" sx={{ mt: 2 }}>
-          View All
+          {t("view_all")}
         </Button>
       </Link>
     </Container>
