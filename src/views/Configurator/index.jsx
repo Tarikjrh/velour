@@ -5,7 +5,7 @@ import colors from "./utils/colors";
 import ItemTitle from "./components/ItemTitle";
 import * as fabric from "fabric";
 import ColorPickerSection from "./components/ColorPickerSection";
-import ProductDetailsCarousel from "./components/ProductDetailsCarousel";
+// import ProductDetailsCarousel from "./components/ProductDetailsCarousel";
 import SizesSection from "./components/SizesSection";
 import SizeGuide from "./components/SizeGuide";
 import CustomizationBtns from "./components/CustomizationBtns";
@@ -14,6 +14,8 @@ import { useParams } from "react-router";
 import productsData from "../../productsData";
 import DisplayOptions from "./components/DisplayOptions";
 import { paths } from "../../routes/paths";
+import SingleImageViewer from "./components/SingleImageViewer";
+import Image from "../../components/Image";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -24,10 +26,11 @@ const Configurator = () => {
   const [canvas, setCanvas] = useState(null);
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedProduct, setSelectedProduct] = useState(null);
-
+  const [selectedImage, setSelectedImage] = useState(selectedProduct?.coverUrl);
   useEffect(() => {
     const product = productsData.find((product) => product.id === id);
     setSelectedProduct(product);
+    setSelectedImage(product?.coverUrl);
   }, [id]);
 
   const breadcrumb_paths = useMemo(
@@ -157,12 +160,18 @@ const Configurator = () => {
             }}
           >
             <Box sx={{ width: { xs: "100%", md: "100%" } }}>
-              <ProductDetailsCarousel
+              <SingleImageViewer
+                ref={tshirtDivRef}
+                id="tshirt-div"
+                selectedProduct={selectedImage}
+                selectedColor={selectedColor}
+              />
+              {/* <ProductDetailsCarousel
                 ref={tshirtDivRef}
                 id="tshirt-div"
                 product={selectedProduct}
                 selectedColor={selectedColor}
-              />
+              /> */}
             </Box>
 
             <Box
@@ -233,6 +242,33 @@ const Configurator = () => {
             )}
           </Stack>
         </Grid>
+      </Grid>
+
+      {/* //Other Images */}
+      <Grid container spacing={2} sx={{ mt: 2, px: { md: 4 } }}>
+        {selectedProduct?.images.map((img, index) => (
+          <Grid item xs={6} md={3} key={index}>
+            <Box
+              sx={{
+                cursor: "pointer",
+                border: selectedImage == img ? "3px solid " : null,
+                borderColor: "primary.main",
+                borderRadius: 2,
+                overflow: "hidden",
+                position: "relative",
+                backgroundColor: selectedColor || "transparent",
+              }}
+            >
+              <Image
+                src={img}
+                selectedColor={selectedColor}
+                onClick={() => {
+                  setSelectedImage(img);
+                }}
+              />
+            </Box>
+          </Grid>
+        ))}
       </Grid>
     </Container>
   );
