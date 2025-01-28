@@ -7,6 +7,7 @@ import UniformsGrid from "./components/UniformsGrid";
 import WhyVelour from "./components/WhyVelour";
 import Showcase from "./components/Showcase";
 import carousel_data from "./utils/carousel_data";
+import NotFoundProduct from "../../components/NotFoundProduct";
 
 export default function LandingPage() {
   return (
@@ -16,6 +17,7 @@ export default function LandingPage() {
       <Strengths />
       <Customization />
       <UniformsGrid />
+      <NotFoundProduct />
       {/* <Milestones /> */}
       <WhyVelour />
       <Showcase />
