@@ -3,7 +3,7 @@ import Strengths from "./components/Strengths";
 import CarouselHero from "./components/CarouselHero";
 import Customization from "./components/Customization";
 import UniformsGrid from "./components/UniformsGrid";
-import Milestones from "./components/Milestones";
+// import Milestones from "./components/Milestones";
 import WhyVelour from "./components/WhyVelour";
 import Showcase from "./components/Showcase";
 import carousel_data from "./utils/carousel_data";
@@ -16,7 +16,7 @@ export default function LandingPage() {
       <Strengths />
       <Customization />
       <UniformsGrid />
-      <Milestones />
+      {/* <Milestones /> */}
       <WhyVelour />
       <Showcase />
     </Stack>
