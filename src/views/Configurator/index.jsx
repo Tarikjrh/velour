@@ -15,7 +15,7 @@ import productsData from "../../productsData";
 import DisplayOptions from "./components/DisplayOptions";
 import { paths } from "../../routes/paths";
 import SingleImageViewer from "./components/SingleImageViewer";
-import Image from "../../components/Image";
+import { default as ImageComponent } from "../../components/Image";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -259,7 +259,7 @@ const Configurator = () => {
                 backgroundColor: selectedColor || "transparent",
               }}
             >
-              <Image
+              <ImageComponent
                 src={img}
                 selectedColor={selectedColor}
                 onClick={() => {
