@@ -48,13 +48,14 @@ function VNavBar(props) {
   const container =
     window !== undefined ? () => window().document.body : undefined;
 
-  const landingPage = location.pathname === "/";
+  const landingPage =
+    location.pathname === "/" || location.pathname === "/about";
 
   return (
     <Box
       sx={{
         position: "fixed",
-        zIndex: 2,
+        zIndex: 20,
         width: "100%",
         pb: 1,
         backgroundColor: landingPage ? "rgba(0, 0, 0, 0.3)" : "#fff",

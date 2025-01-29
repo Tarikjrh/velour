@@ -22,7 +22,6 @@ export const mainRoutes = [
       </SimpleLayout>
     ),
     children: [
-      { path: "about", element: <AboutUs /> },
       { path: "catalog", element: <Catalog /> },
       { path: "catalog/:id", element: <Catalog /> },
       { path: "contact", element: <ContactUs /> },
@@ -32,6 +31,14 @@ export const mainRoutes = [
         children: [{ path: ":id", element: <Configurator /> }],
       },
     ],
+  },
+  {
+    element: (
+      <SimpleLayout>
+        <Outlet />
+      </SimpleLayout>
+    ),
+    children: [{ path: "about", element: <AboutUs /> }],
   },
 
   {

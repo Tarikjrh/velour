@@ -1,14 +1,16 @@
-import { Box, Container, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import Image from "../../../components/Image";
+import { useResponsive } from "../../../hooks/use-responsive";
 
 export default function AboutTitle() {
+  const smDown = useResponsive("down", "md");
   return (
-    <Container>
+    <Box sx={{ pt: { xs: "90px", sm: 0 } }}>
       <Box sx={{ position: "relative" }}>
         <Image
           src={"/about_title.png"}
-          ratio={"21/9"}
-          sx={{ borderRadius: "20px", width: "100%" }}
+          ratio={smDown ? "16/9" : "21/9"}
+          sx={{ width: "100%" }}
         />
         <Box
           sx={{
@@ -38,6 +40,6 @@ export default function AboutTitle() {
           </Typography>
         </Box>
       </Box>
-    </Container>
+    </Box>
   );
 }

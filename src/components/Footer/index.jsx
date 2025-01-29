@@ -9,12 +9,22 @@ import {
 import Iconify from "../iconify";
 import useLocales from "../../locales/use-locales";
 import storeDetails, { socialIcons } from "../../utils/storeDetails";
+import { useLocation } from "react-router";
 
 export default function Footer() {
   const { t } = useLocales();
+  const location = useLocation();
 
+  const noPaddingPaths =
+    location.pathname === "/about" || location.pathname === "/catalog";
   return (
-    <Box sx={{ backgroundColor: "#1F261E", color: "#fff", mt: 10 }}>
+    <Box
+      sx={{
+        backgroundColor: "#1F261E",
+        color: "#fff",
+        mt: noPaddingPaths ? 0 : 10,
+      }}
+    >
       <Container>
         <Stack
           direction={{ xs: "column", sm: "row" }}
