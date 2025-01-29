@@ -1,4 +1,17 @@
-import { Alert, Box, Container, Grid, Stack, Typography } from "@mui/material";
+import {
+  Alert,
+  Box,
+  Button,
+  Container,
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+  Grid,
+  Stack,
+  TextField,
+  Typography,
+} from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import VBreadcrumbs from "../../components/VBreadcrumbs";
 import colors from "./utils/colors";
@@ -27,6 +40,13 @@ const Configurator = () => {
   const [selectedColor, setSelectedColor] = useState(colors[0]);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(selectedProduct?.coverUrl);
+
+  const [open, setOpen] = useState(false);
+  const [text, setText] = useState("");
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   useEffect(() => {
     const product = productsData.find((product) => product.id === id);
     setSelectedProduct(product);
@@ -105,7 +125,9 @@ const Configurator = () => {
 
   // Add text to the canvas
   const addTextToCanvas = () => {
-    const text = new fabric.Text("Hello, World!", {
+    if (!text.trim()) return;
+
+    const fabricText = new fabric.Text(text, {
       left: 50,
       top: 50,
       fontFamily: "Arial",
@@ -114,9 +136,12 @@ const Configurator = () => {
     });
 
     adjustCanvasSize();
-    canvas.add(text);
-    canvas.setActiveObject(text);
+    canvas.add(fabricText);
+    canvas.setActiveObject(fabricText);
     canvas.renderAll();
+
+    setText(""); // Clear input
+    handleClose(); // Close modal
   };
 
   if (!selectedProduct) {
@@ -136,6 +161,41 @@ const Configurator = () => {
       }}
       maxWidth={"lg"}
     >
+      <Dialog
+        maxWidth="sm"
+        fullWidth
+        open={open}
+        onClose={handleClose}
+        PaperProps={{
+          component: "form",
+          onSubmit: (event) => {
+            event.preventDefault();
+            const formData = new FormData(event.currentTarget);
+            const formJson = Object.fromEntries(formData.entries());
+            const email = formJson.email;
+            console.log(email);
+            handleClose();
+          },
+        }}
+      >
+        <DialogTitle>Add Text</DialogTitle>
+        <DialogContent>
+          <TextField
+            sx={{ mt: 2 }}
+            fullWidth
+            label="Enter Text"
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+          />
+        </DialogContent>
+        <DialogActions>
+          <Button type="submit" variant="contained" onClick={addTextToCanvas}>
+            Add to Image
+          </Button>{" "}
+          <Button onClick={handleClose}>Cancel</Button>
+        </DialogActions>
+      </Dialog>
+
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
@@ -235,7 +295,7 @@ const Configurator = () => {
 
             <CustomizationBtns
               onImgClick={handleCustomPictureUpload}
-              onTextClick={addTextToCanvas}
+              onTextClick={handleOpen}
             />
             {selectedProduct?.options && (
               <DisplayOptions options={selectedProduct?.options} />
