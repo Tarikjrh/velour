@@ -38,25 +38,25 @@ export default function ProductItem({ product }) {
 
   const linkTo = paths.catalog.details(id);
 
-  const renderLabels = (newLabel.enabled || saleLabel.enabled) && (
-    <Stack
-      direction="row"
-      alignItems="center"
-      spacing={1}
-      sx={{ position: "absolute", zIndex: 9, top: 16, right: 16 }}
-    >
-      {newLabel.enabled && (
-        <Label variant="filled" color="info">
-          {newLabel.content}
-        </Label>
-      )}
-      {saleLabel.enabled && (
-        <Label variant="filled" color="error">
-          {saleLabel.content}
-        </Label>
-      )}
-    </Stack>
-  );
+  // const renderLabels = (newLabel.enabled || saleLabel.enabled) && (
+  //   <Stack
+  //     direction="row"
+  //     alignItems="center"
+  //     spacing={1}
+  //     sx={{ position: "absolute", zIndex: 9, top: 16, right: 16 }}
+  //   >
+  //     {newLabel.enabled && (
+  //       <Label variant="filled" color="info">
+  //         {newLabel.content}
+  //       </Label>
+  //     )}
+  //     {saleLabel.enabled && (
+  //       <Label variant="filled" color="error">
+  //         {saleLabel.content}
+  //       </Label>
+  //     )}
+  //   </Stack>
+  // );
 
   const renderImg = (
     <Box sx={{ position: "relative", p: 1 }}>
@@ -97,7 +97,7 @@ export default function ProductItem({ product }) {
 
   return (
     <Card component={Link} href={linkTo} sx={{}}>
-      {renderLabels}
+      {/* {renderLabels} */}
 
       {renderImg}
 
