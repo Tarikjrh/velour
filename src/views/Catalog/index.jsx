@@ -177,6 +177,15 @@ export default function ProductShopView() {
         >
           <Typography variant="h4">{t("catalog")}</Typography>
           <Button
+            onClick={() => {
+              const pdfUrl = "/catalog.pdf"; // Ensure the file is in the public folder
+              const link = document.createElement("a");
+              link.href = pdfUrl;
+              link.download = "catalog.pdf"; // Set the filename
+              document.body.appendChild(link);
+              link.click();
+              document.body.removeChild(link);
+            }}
             variant="contained"
             startIcon={<Iconify icon="ic:baseline-menu-book" />}
           >
