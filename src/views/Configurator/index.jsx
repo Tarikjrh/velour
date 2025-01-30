@@ -29,6 +29,7 @@ import DisplayOptions from "./components/DisplayOptions";
 import { paths } from "../../routes/paths";
 import SingleImageViewer from "./components/SingleImageViewer";
 import { default as ImageComponent } from "../../components/Image";
+import SimilarItems from "./components/SimilarItems";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -50,7 +51,7 @@ const Configurator = () => {
   useEffect(() => {
     const product = productsData.find((product) => product.id === id);
     setSelectedProduct(product);
-    setSelectedColor(product?.colors[0]);
+    setSelectedColor(product?.colors ? product?.colors[0] : null);
     setSelectedImage(product?.coverUrl);
   }, [id]);
 
@@ -331,6 +332,7 @@ const Configurator = () => {
           </Grid>
         ))}
       </Grid>
+      <SimilarItems selectedItem={selectedProduct} />
     </Container>
   );
 };
