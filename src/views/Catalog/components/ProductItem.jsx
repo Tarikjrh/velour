@@ -84,15 +84,9 @@ export default function ProductItem({ product }) {
       direction={"row"}
       justifyContent={"space-between"}
     >
-      <Link
-        component={RouterLink}
-        href={linkTo}
-        color="inherit"
-        variant="subtitle2"
-        noWrap
-      >
+      <Box color="inherit" variant="subtitle2">
         {name}
-      </Link>
+      </Box>
 
       <Stack direction="row" alignItems="center" justifyContent="space-between">
         {colors && <ColorPreview colors={colors} />}
