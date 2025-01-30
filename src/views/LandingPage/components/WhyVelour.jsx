@@ -14,7 +14,7 @@ export default function WhyVelour() {
           direction={"column"}
           justifyContent="center"
           alignItems="flex-start"
-          sx={{ pl: { xs: 2, md: 20 } }}
+          sx={{ pl: { xs: 2, sm: 4, md: 5, lg: 20 } }}
         >
           <Typography variant="why_velour_title">
             {t("why_choose_velour.title")}
@@ -41,7 +41,7 @@ export default function WhyVelour() {
           <Image
             src="/why_contact.png"
             sx={{
-              width: { xs: "100%", md: "80%" },
+              width: { xs: "100%", sm: "100%", md: "80%" },
               borderTopLeftRadius: "20px",
               borderBottomLeftRadius: "20px",
             }}
