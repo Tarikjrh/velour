@@ -37,7 +37,7 @@ const Configurator = () => {
   const tshirtDivRef = useRef(null);
 
   const [canvas, setCanvas] = useState(null);
-  const [selectedColor, setSelectedColor] = useState(colors[0]);
+  const [selectedColor, setSelectedColor] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(selectedProduct?.coverUrl);
 
@@ -50,6 +50,7 @@ const Configurator = () => {
   useEffect(() => {
     const product = productsData.find((product) => product.id === id);
     setSelectedProduct(product);
+    setSelectedColor(product?.colors[0]);
     setSelectedImage(product?.coverUrl);
   }, [id]);
 

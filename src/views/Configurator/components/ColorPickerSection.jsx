@@ -23,7 +23,12 @@ const ColorPickerSection = ({
         onSelectColor={onSelectColor}
         limit={6}
       />
-      {showColorWheel && <ColorPickerWithPopup onSelectColor={onSelectColor} />}
+      {showColorWheel && (
+        <ColorPickerWithPopup
+          selectedColor={selectedColor}
+          onSelectColor={onSelectColor}
+        />
+      )}
     </Stack>
   </Stack>
 );

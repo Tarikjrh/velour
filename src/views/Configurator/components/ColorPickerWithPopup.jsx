@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
 import Wheel from "@uiw/react-color-wheel";
 import ShadeSlider from "@uiw/react-color-shade-slider";
-import { hsvaToHex } from "@uiw/color-convert";
+import { hsvaToHex, hexToHsva } from "@uiw/color-convert";
 import { Button, Box } from "@mui/material";
 import CustomPopover from "../../../components/custom-popover/custom-popover";
 import PropTypes from "prop-types";
 
-function ColorPickerWithPopup({ onSelectColor }) {
-  const [hsva, setHsva] = useState({ h: 214, s: 43, v: 90, a: 1 });
+function ColorPickerWithPopup({ selectedColor, onSelectColor }) {
+  const [hsva, setHsva] = useState(hexToHsva(selectedColor || "#fff"));
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleOpen = (event) => {
@@ -19,7 +19,9 @@ function ColorPickerWithPopup({ onSelectColor }) {
   };
 
   useEffect(() => {
-    onSelectColor(hsvaToHex(hsva));
+    if (selectedColor != hsvaToHex(hsva)) {
+      onSelectColor(hsvaToHex(hsva));
+    }
 
     return () => {};
   }, [hsva]);
@@ -77,4 +79,5 @@ export default ColorPickerWithPopup;
 
 ColorPickerWithPopup.propTypes = {
   onSelectColor: PropTypes.func,
+  selectedColor: PropTypes.string,
 };
