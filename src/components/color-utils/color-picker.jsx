@@ -17,12 +17,14 @@ const ColorPicker = forwardRef(
     const handleSelect = useCallback(
       (color) => {
         if (singleSelect) {
-          if (color !== selected) {
-            onSelectColor(color);
+          if (color.toLowerCase() !== selected.toLowerCase()) {
+            onSelectColor(color.toLowerCase());
           }
         } else {
-          const newSelected = selected.includes(color)
-            ? selected.filter((value) => value !== color)
+          const newSelected = selected.includes(color.toLowerCase())
+            ? selected.filter(
+                (value) => value.toLowerCase() !== color.toLowerCase()
+              )
             : [...selected, color];
 
           onSelectColor(newSelected);
@@ -48,8 +50,8 @@ const ColorPicker = forwardRef(
       >
         {colors.map((color) => {
           const hasSelected = singleSelect
-            ? selected === color
-            : selected.includes(color);
+            ? selected === color.toLowerCase()
+            : selected.includes(color.toLowerCase());
 
           return (
             <ButtonBase
@@ -60,7 +62,7 @@ const ColorPicker = forwardRef(
                 borderRadius: "50%",
               }}
               onClick={() => {
-                handleSelect(color);
+                handleSelect(color.toLowerCase());
               }}
             >
               <Stack
