@@ -323,7 +323,6 @@ const Configurator = () => {
             >
               <ImageComponent
                 src={img}
-                selectedColor={selectedColor}
                 onClick={() => {
                   setSelectedImage(img);
                 }}
