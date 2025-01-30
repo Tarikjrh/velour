@@ -29,7 +29,13 @@ export default function Showcase() {
             sx={{ textDecoration: "none" }}
           >
             <Stack spacing={2}>
-              <Image src={product.coverUrl} sx={{ borderRadius: "20px" }} />
+              <Image
+                src={product.coverUrl}
+                sx={{
+                  borderRadius: "20px",
+                  minHeight: { xs: "167px", md: "200px" },
+                }}
+              />
               <Stack
                 direction={"row"}
                 justifyContent={"space-between"}
