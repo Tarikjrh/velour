@@ -11,7 +11,6 @@ import Iconify from "../../iconify";
 import PropTypes from "prop-types";
 import Language from "./Buttons/Language";
 import RouterLink from "../../RouterLink";
-import OrderNowDialog from "../../OrderNowDialog";
 
 export default function NavDrawer({
   handleDrawerToggle,
@@ -43,11 +42,6 @@ export default function NavDrawer({
             </ListItemButton>
           </ListItem>
         ))}
-        <ListItem disablePadding>
-          <ListItemButton sx={{ textAlign: "start" }}>
-            <OrderNowDialog />
-          </ListItemButton>
-        </ListItem>
 
         <ListItem disablePadding>
           <ListItemButton sx={{ textAlign: "start" }}>

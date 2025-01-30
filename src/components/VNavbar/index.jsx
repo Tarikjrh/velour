@@ -131,7 +131,12 @@ function VNavBar(props) {
             handleDrawerToggle={handleDrawerToggle}
             handleChangeLang={handleChangeLang}
             locales={locales}
-          />
+          >
+            <OrderNowDialog />
+          </NavDrawer>
+          <Box sx={{ px: 2 }}>
+            <OrderNowDialog />
+          </Box>
         </Drawer>
       </nav>
     </Box>
