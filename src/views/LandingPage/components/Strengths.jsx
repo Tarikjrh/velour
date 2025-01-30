@@ -1,11 +1,12 @@
 import { Box, Container, Stack, Typography } from "@mui/material";
-import { useEffect, useRef } from "react";
+import { useRef } from "react";
 import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Image from "../../../components/Image";
 import strengths_data from "../utils/strengths_data";
 import { useLocales } from "../../../locales";
 import { useTheme } from "@emotion/react";
+import { useLayoutEffect } from "react";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -15,7 +16,7 @@ export default function Strengths() {
   const containerRef = useRef(null);
   const scrollContentRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const ctx = gsap.context(() => {
       const scrollContent = scrollContentRef.current;
 
