@@ -6,7 +6,6 @@ import PropTypes from "prop-types";
 // eslint-disable-next-line react/display-name
 const SingleImageViewer = forwardRef(
   ({ selectedProduct, onClick, selectedColor, id }, ref) => {
-    console.log("🚀 ~ selectedProduct:", selectedProduct);
     return (
       <Box
         id={id}
