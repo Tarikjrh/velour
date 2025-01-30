@@ -78,7 +78,12 @@ export default function ProductItem({ product }) {
   );
 
   const renderContent = (
-    <Stack spacing={2.5} sx={{ p: 3, pt: 2 }}>
+    <Stack
+      spacing={2.5}
+      sx={{ p: 3, pt: 2 }}
+      direction={"row"}
+      justifyContent={"space-between"}
+    >
       <Link
         component={RouterLink}
         href={linkTo}
