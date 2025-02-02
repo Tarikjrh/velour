@@ -12,7 +12,7 @@ export default function CollectionTabs({
   externalValue,
 }) {
   const { t } = useLocales();
-  const [value, setValue] = React.useState(null);
+  const [value, setValue] = React.useState("hide_me");
 
   // Update internal state when externalValue changes
   React.useEffect(() => {
@@ -31,7 +31,7 @@ export default function CollectionTabs({
 
   const handleClick = (e) => {
     if (e === value) {
-      setValue(null);
+      setValue("hide_me");
       onResetFilters("collection");
       return;
     }
@@ -72,6 +72,7 @@ export default function CollectionTabs({
               value={cat.id}
               label={t(cat.title)}
               sx={{
+                display: cat.id == "hide_me" ? "none" : "block",
                 backgroundImage:
                   value === cat.id ? `url("${cat.img}")` : "none",
                 backgroundColor: value === cat.id ? "transparent" : "#e0e0e0", // Gray for unselected items

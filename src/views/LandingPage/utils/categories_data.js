@@ -15,6 +15,11 @@ const categories_data = [
     title: "categories.education",
   },
   {
+    id: "hide_me",
+    img: "/categories/education.png",
+    title: "null",
+  },
+  {
     id: "Industrial-Workwear",
     img: "/categories/industrial.png",
     title: "categories.industrial",
