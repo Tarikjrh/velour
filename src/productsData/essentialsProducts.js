@@ -65,7 +65,7 @@ const essentialProducts = [
   },
   {
     id: "7b5f23e9-d4fc-4a89-8d69-8u6yh",
-    name: "Polos",
+    name: "Shirts",
     category: "Tops",
     collection: "Essentials",
     images: [
@@ -106,6 +106,30 @@ const essentialProducts = [
     description:
       "Stay warm and stylish with our essential jackets. Designed for comfort and versatility, these jackets provide the perfect layer for any season.",
     coverUrl: "/products/essentials/essentials_8.png",
+    colors: ["#ffffff", "#2196F3", "#00BCD4"],
+  },
+  {
+    id: "7b5f23e9-d4fc-4a89-8d69-76e7jythg",
+    name: "Hoodies",
+    category: "Tops",
+    collection: "Essentials",
+    images: [
+      "/products/essentials/essentials_5.png",
+      "/products/essentials/essentials_10.png",
+      "/products/essentials/essentials_15.png",
+      "/products/essentials/essentials_14.png",
+    ],
+    options: [
+      { type: "fit", variants: [{ name: "Regular" }, { name: "Slim" }] },
+      {
+        type: "pockets",
+        variants: [{ name: "Pocket" }, { name: "No Pocket" }],
+      },
+    ],
+    tags: ["Outerwear", "Warm & Stylish", "Versatile Layering"],
+    description:
+      "Stay warm and stylish with our essential jackets. Designed for comfort and versatility, these jackets provide the perfect layer for any season.",
+    coverUrl: "/products/essentials/essentials_15.png",
     colors: ["#ffffff", "#2196F3", "#00BCD4"],
   },
 ];
