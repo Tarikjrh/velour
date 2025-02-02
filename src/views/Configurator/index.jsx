@@ -155,7 +155,6 @@ const Configurator = () => {
 
   fabric.InteractiveFabricObject.ownDefaults = {
     ...fabric.InteractiveFabricObject.ownDefaults,
-    cornerStyle: "round",
     cornerStrokeColor: "blue",
     cornerColor: "lightblue",
     cornerStyle: "circle",
