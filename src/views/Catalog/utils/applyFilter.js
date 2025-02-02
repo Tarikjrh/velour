@@ -32,12 +32,15 @@ function applyFilter({ inputData, filters, sortBy }) {
   }
 
   if (category !== "all") {
-    inputData = inputData.filter((product) =>
-      product.category.some(
-        (cat) => cat.toLowerCase() === category.toLowerCase()
-      )
-    );
+    inputData = inputData.filter((product) => product.category === category);
   }
+  // if (category !== "all") {
+  //   inputData = inputData.filter((product) =>
+  //     product.category.some(
+  //       (cat) => cat.toLowerCase() === category.toLowerCase()
+  //     )
+  //   );
+  // }
 
   if (collection !== "") {
     inputData = inputData.filter(
