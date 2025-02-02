@@ -25,7 +25,7 @@ import { Box, Button } from "@mui/material";
 import Iconify from "../../components/iconify";
 import applyFilter from "./utils/applyFilter";
 import CollectionTabs from "./components/CollectionTabs";
-import productsData from "../../productsData";
+import productsData from "../../productsData/productsData";
 import NotFoundProduct from "../../components/NotFoundProduct";
 import { useParams } from "react-router";
 import { useLocales } from "../../locales";

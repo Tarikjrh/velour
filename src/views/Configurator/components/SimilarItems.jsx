@@ -2,7 +2,7 @@ import { Container, Grid, Link, Stack, Typography } from "@mui/material";
 import Image from "../../../components/Image";
 import ColorPreview from "../../../components/color-utils/color-preview";
 import { paths } from "../../../routes/paths";
-import productsData from "../../../productsData";
+import productsData from "../../../productsData/productsData";
 import { useLocales } from "../../../locales";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";

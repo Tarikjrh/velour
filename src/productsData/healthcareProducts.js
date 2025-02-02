@@ -1,4 +1,4 @@
-const productsData = [
+const healthcareProducts = [
   {
     id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e72d2",
     name: "Lab Coats",
@@ -25,29 +25,7 @@ const productsData = [
     coverUrl: "/products/healthcare/labcoat_1.png",
     colors: ["#ffffff", "#2196F3", "#00BCD4"],
   },
-  // {
-  //   id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e72d51",
-  //   name: "Lab Coats",
-  //   category: ["Lab Coats"],
-  //   collection: "Healthcare",
-  //   images: ["/products/healthcare/labcoat_2.png"],
-  //   options: [
-  //     { type: "length", variants: [{ name: "Long" }, { name: "Short" }] },
-  //     {
-  //       type: "pockets",
-  //       variants: [{ name: "Pocket" }, { name: "No Pocket" }],
-  //     },
-  //     {
-  //       type: "buttons",
-  //       variants: [{ name: "Button" }, { name: "Zipper" }],
-  //     },
-  //   ],
-  //   tags: ["Lab Coats", "Professional Wear", "Medical Uniform"],
-  //   description:
-  //     "Experience superior comfort and professionalism with our lab coats. Designed for healthcare professionals, these lab coats are lightweight, breathable, and made with durable fabric to endure long workdays.",
-  //   coverUrl: "/products/healthcare/labcoat_2.png",
-  //   colors: ["#ffffff", "#2196F3", "#00BCD4"],
-  // },
+
   {
     id: "7b5f23e9-d4fc-4a89-8d69-61a8f39e72d3",
     category: "Nursing Caps",
@@ -127,4 +105,4 @@ const productsData = [
   },
 ];
 
-export default productsData;
+export default healthcareProducts;

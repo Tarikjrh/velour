@@ -23,7 +23,7 @@ import SizeGuide from "./components/SizeGuide";
 import CustomizationBtns from "./components/CustomizationBtns";
 import ShareProduct from "./components/ShareProduct";
 import { useParams } from "react-router";
-import productsData from "../../productsData";
+import productsData from "../../productsData/productsData";
 import DisplayOptions from "./components/DisplayOptions";
 import { paths } from "../../routes/paths";
 import SingleImageViewer from "./components/SingleImageViewer";

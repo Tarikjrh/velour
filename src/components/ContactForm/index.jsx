@@ -1,7 +1,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { Button, Chip, Stack } from "@mui/material";
 import { RHFAutocomplete, RHFTextField } from "../hook-form";
-import productsData from "../../productsData";
+import productsData from "../../productsData/productsData";
 import { useMemo } from "react";
 import PropTypes from "prop-types";
 import useLocales from "../../locales/use-locales";

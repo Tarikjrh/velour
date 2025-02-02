@@ -9,8 +9,8 @@ import {
 import Image from "../../../components/Image";
 import ColorPreview from "../../../components/color-utils/color-preview";
 import { paths } from "../../../routes/paths";
-import productsData from "../../../productsData";
 import { useLocales } from "../../../locales";
+import productsData from "../../../productsData/productsData";
 
 export default function Showcase() {
   const { t } = useLocales();
