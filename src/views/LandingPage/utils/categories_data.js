@@ -14,11 +14,11 @@ const categories_data = [
     img: "/categories/education.png",
     title: "categories.education",
   },
-  {
-    id: "hide_me",
-    img: "/categories/education.png",
-    title: "null",
-  },
+  // {
+  //   id: "hide_me",
+  //   img: "/categories/education.png",
+  //   title: "null",
+  // },
   {
     id: "Industrial-Workwear",
     img: "/categories/industrial.png",
