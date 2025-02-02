@@ -53,7 +53,7 @@ export default function ProductShopView() {
   const [sortBy, setSortBy] = useState("featured");
 
   const [searchQuery, setSearchQuery] = useState("");
-  const [externalValue, setExternalValue] = useState("hide_me");
+  const [externalValue, setExternalValue] = useState(null);
 
   const debouncedQuery = useDebounce(searchQuery);
 
