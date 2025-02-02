@@ -9,9 +9,8 @@ export const PRODUCT_GENDER_OPTIONS = [
 export const PRODUCT_CATEGORY_OPTIONS = [
   "Accessories",
   "Hats",
-  "Shoes",
-  "T-Shirts",
-  "Polo Shirts",
+  "Tops",
+  "Bottoms",
   "Scrubs",
 ];
 
