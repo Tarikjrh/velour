@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Stack,
   Tooltip,
@@ -30,12 +30,6 @@ const ShareProduct = () => {
             <Iconify icon="ic:baseline-share" />
           </IconButton>
         </Tooltip>
-
-        {/* <Tooltip title="Download Qr Code">
-          <IconButton onClick={() => {}}>
-            <Iconify icon="ri:qr-code-fill" />
-          </IconButton>
-        </Tooltip> */}
       </Box>
 
       <Snackbar

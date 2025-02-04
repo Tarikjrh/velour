@@ -1,6 +1,4 @@
-import React from "react";
 import { Fab, Zoom } from "@mui/material";
-// import KeyboardArrowUpIcon from "@mui/icons-material/KeyboardArrowUp";
 import { useScrollTrigger, Box } from "@mui/material";
 import Iconify from "../iconify";
 

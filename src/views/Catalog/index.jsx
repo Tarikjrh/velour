@@ -13,7 +13,6 @@ import ProductFilters from "./components/ProductFilters";
 import {
   PRODUCT_CATEGORY_OPTIONS,
   PRODUCT_COLOR_OPTIONS,
-  PRODUCT_GENDER_OPTIONS,
   PRODUCT_SORT_OPTIONS,
 } from "./utils/_product";
 import ProductSort from "./components/ProductSort";
@@ -125,7 +124,6 @@ export default function ProductShopView() {
           canReset={canReset}
           onResetFilters={handleResetFilters}
           colorOptions={PRODUCT_COLOR_OPTIONS}
-          genderOptions={PRODUCT_GENDER_OPTIONS}
           categoryOptions={["all", ...PRODUCT_CATEGORY_OPTIONS]}
         />
 

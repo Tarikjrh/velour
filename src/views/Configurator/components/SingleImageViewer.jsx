@@ -1,5 +1,5 @@
 import { Box } from "@mui/material";
-import React, { forwardRef } from "react";
+import { forwardRef } from "react";
 import Image from "../../../components/Image";
 import PropTypes from "prop-types";
 

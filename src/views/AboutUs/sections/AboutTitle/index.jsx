@@ -1,6 +1,6 @@
 import { Box, Typography } from "@mui/material";
-import Image from "../../../components/Image";
-import { useResponsive } from "../../../hooks/use-responsive";
+import Image from "../../../../components/Image";
+import { useResponsive } from "../../../../hooks/use-responsive";
 
 export default function AboutTitle() {
   const smDown = useResponsive("down", "md");

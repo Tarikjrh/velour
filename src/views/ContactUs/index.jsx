@@ -1,8 +1,8 @@
 import { Stack } from "@mui/material";
-import SectionTitle from "./components/SectionTitle";
-import OtherContact from "./components/OtherContact";
-import WorkingHours from "./components/WorkingHours";
-import ContactFormSection from "./components/ContactFormSection";
+import SectionTitle from "./sections/SectionTitle";
+import OtherContact from "./sections/OtherContact";
+import WorkingHours from "./sections/WorkingHours";
+import ContactFormSection from "./sections/ContactFormSection";
 
 export default function ContactUs() {
   return (

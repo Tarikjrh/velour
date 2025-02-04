@@ -1,5 +1,4 @@
 import { Avatar, Stack, Typography } from "@mui/material";
-import React from "react";
 
 export default function SizesSection({ sizes, limit = 6 }) {
   return (

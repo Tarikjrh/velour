@@ -20,11 +20,11 @@ export default function App() {
     <Box sx={{ backgroundColor: "white" }}>
       <SettingsProvider
         defaultSettings={{
-          themeMode: "light", // 'light' | 'dark'
-          themeDirection: "ltr", //  'rtl' | 'ltr'
-          themeContrast: "default", // 'default' | 'bold'
-          themeLayout: "vertical", // 'vertical' | 'horizontal' | 'mini'
-          themeColorPresets: "default", // 'default' | 'cyan' | 'purple' | 'blue' | 'orange' | 'red'
+          themeMode: "light",
+          themeDirection: "ltr",
+          themeContrast: "default",
+          themeLayout: "vertical",
+          themeColorPresets: "default",
           themeStretch: false,
         }}
       >

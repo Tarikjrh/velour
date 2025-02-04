@@ -1,4 +1,4 @@
-import React, { Suspense } from "react";
+import { Suspense } from "react";
 import VNavBar from "../components/VNavbar";
 import Footer from "../components/Footer";
 import SplashScreen from "../components/SplashScreen";

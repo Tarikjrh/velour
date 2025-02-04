@@ -14,7 +14,6 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Iconify from "../../../components/iconify";
 import Scrollbar from "../../../components/scrollbar";
 import ColorPicker from "../../../components/color-utils/color-picker";
-import { Checkbox } from "@mui/material";
 // components
 
 // ----------------------------------------------------------------------
@@ -31,19 +30,8 @@ export default function ProductFilters({
   onResetFilters,
   //
   colorOptions,
-  genderOptions,
   categoryOptions,
 }) {
-  const handleFilterGender = useCallback(
-    (newValue) => {
-      const checked = filters.gender.includes(newValue)
-        ? filters.gender.filter((value) => value !== newValue)
-        : [...filters.gender, newValue];
-      onFilters("gender", checked);
-    },
-    [filters.gender, onFilters]
-  );
-
   const handleFilterCategory = useCallback(
     (newValue) => {
       onFilters("category", newValue);
@@ -80,26 +68,6 @@ export default function ProductFilters({
       <IconButton onClick={onClose}>
         <Iconify icon="mingcute:close-line" />
       </IconButton>
-    </Stack>
-  );
-
-  const renderGender = (
-    <Stack>
-      <Typography variant="subtitle2" sx={{ mb: 1 }}>
-        Gender
-      </Typography>
-      {genderOptions.map((option) => (
-        <FormControlLabel
-          key={option.value}
-          control={
-            <Checkbox
-              checked={filters.gender.includes(option.label)}
-              onClick={() => handleFilterGender(option.label)}
-            />
-          }
-          label={option.label}
-        />
-      ))}
     </Stack>
   );
 
@@ -174,8 +142,6 @@ export default function ProductFilters({
 
         <Scrollbar sx={{ px: 2.5, py: 3 }}>
           <Stack spacing={3}>
-            {renderGender}
-
             {renderCategory}
 
             {renderColor}

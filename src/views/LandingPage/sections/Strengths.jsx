@@ -20,7 +20,7 @@ export default function Strengths() {
     const ctx = gsap.context(() => {
       const scrollContent = scrollContentRef.current;
 
-      const mm = gsap.matchMedia(); // GSAP MatchMedia instance
+      const mm = gsap.matchMedia();
 
       mm.add(
         {
@@ -95,7 +95,7 @@ export default function Strengths() {
       sx={{
         overflow: "hidden",
         position: "relative",
-        height: "100vh", // Full viewport height for pinning
+        height: "100vh",
       }}
     >
       <Typography
@@ -109,9 +109,9 @@ export default function Strengths() {
         ref={scrollContentRef}
         sx={{
           display: "flex",
-          gap: "32px", // Spacing between items
-          flexWrap: "nowrap", // Prevent wrapping for desktop
-          width: "max-content", // Ensure proper horizontal scrolling
+          gap: "32px",
+          flexWrap: "nowrap",
+          width: "max-content",
         }}
       >
         {strengths_data.map((item) => (
@@ -122,8 +122,8 @@ export default function Strengths() {
               sx={{
                 borderRadius: "20px",
                 height: "100%",
-                maxWidth: "100%", // Ensure images resize properly on mobile
-                minWidth: "407px", // Ensure proper horizontal scrolling
+                maxWidth: "100%",
+                minWidth: "407px",
               }}
             />
             <Stack>

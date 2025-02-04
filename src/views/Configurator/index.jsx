@@ -1,30 +1,12 @@
-import {
-  Alert,
-  Box,
-  Button,
-  Container,
-  Dialog,
-  DialogActions,
-  DialogContent,
-  DialogTitle,
-  Grid,
-  Stack,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Box, Container, Grid, Stack, Typography } from "@mui/material";
 import { useEffect, useMemo, useRef, useState } from "react";
 import VBreadcrumbs from "../../components/VBreadcrumbs";
 import ItemTitle from "./components/ItemTitle";
 import * as fabric from "fabric";
-import ColorPickerSection from "./components/ColorPickerSection";
-// import ProductDetailsCarousel from "./components/ProductDetailsCarousel";
-import SizesSection from "./components/SizesSection";
-import SizeGuide from "./components/SizeGuide";
-import CustomizationBtns from "./components/CustomizationBtns";
+
 import ShareProduct from "./components/ShareProduct";
 import { useParams } from "react-router";
 import productsData from "../../productsData/productsData";
-import DisplayOptions from "./components/DisplayOptions";
 import { paths } from "../../routes/paths";
 import SingleImageViewer from "./components/SingleImageViewer";
 import { default as ImageComponent } from "../../components/Image";
@@ -34,6 +16,8 @@ import rotateImgIcon from "./utils/fabricjs/rotateImgIcon";
 import deleteImgIcon from "./utils/fabricjs/deleteImgIcon";
 import rotationStyleHandler from "./utils/fabricjs/rotationStyleHandler";
 import deleteObject from "./utils/fabricjs/deleteObject";
+import AddTextDialog from "./components/AddTextDialog";
+import RenderDetails from "./components/RenderDetails";
 
 const Configurator = () => {
   const { id } = useParams();
@@ -45,7 +29,6 @@ const Configurator = () => {
   const [selectedColor, setSelectedColor] = useState(null);
   const [selectedProduct, setSelectedProduct] = useState(null);
   const [selectedImage, setSelectedImage] = useState(selectedProduct?.coverUrl);
-
   const [open, setOpen] = useState(false);
   const [text, setText] = useState("");
 
@@ -161,7 +144,6 @@ const Configurator = () => {
     padding: 5,
     transparentCorners: false,
     cornerDashArray: [2, 2],
-    // borderColor: "orange",
     borderScaleFactor: 2,
   };
 
@@ -227,41 +209,13 @@ const Configurator = () => {
       }}
       maxWidth={"lg"}
     >
-      <Dialog
-        maxWidth="sm"
-        fullWidth
+      <AddTextDialog
+        addTextToCanvas={addTextToCanvas}
+        handleClose={handleClose}
+        setText={setText}
+        text={text}
         open={open}
-        onClose={handleClose}
-        PaperProps={{
-          component: "form",
-          onSubmit: (event) => {
-            event.preventDefault();
-            const formData = new FormData(event.currentTarget);
-            const formJson = Object.fromEntries(formData.entries());
-            const email = formJson.email;
-            console.log(email);
-            handleClose();
-          },
-        }}
-      >
-        <DialogTitle>Add Text</DialogTitle>
-        <DialogContent>
-          <TextField
-            sx={{ mt: 2 }}
-            fullWidth
-            label="Enter Text"
-            value={text}
-            onChange={(e) => setText(e.target.value)}
-          />
-        </DialogContent>
-        <DialogActions>
-          <Button type="submit" variant="contained" onClick={addTextToCanvas}>
-            Add to Image
-          </Button>{" "}
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
-
+      />
       <Stack
         direction={"row"}
         justifyContent={"space-between"}
@@ -292,12 +246,6 @@ const Configurator = () => {
                 selectedProduct={selectedImage}
                 selectedColor={selectedColor}
               />
-              {/* <ProductDetailsCarousel
-                ref={tshirtDivRef}
-                id="tshirt-div"
-                product={selectedProduct}
-                selectedColor={selectedColor}
-              /> */}
             </Box>
 
             <Box
@@ -329,45 +277,13 @@ const Configurator = () => {
             </Box>
           </Box>
         </Grid>
-
-        <Grid item xs={12} sm={6} sx={{ px: 2 }}>
-          <Stack direction={"column"} spacing={4}>
-            <ItemTitle
-              text={selectedProduct?.name}
-              sx={{ display: { xs: "none", md: "block" } }}
-            />
-
-            <Typography component={"h2"} variant={"body1"}>
-              {selectedProduct?.description}
-            </Typography>
-
-            {selectedProduct?.message && (
-              <Alert severity="info">{selectedProduct?.message}</Alert>
-            )}
-
-            {selectedProduct?.colors && (
-              <ColorPickerSection
-                colors={selectedProduct?.colors}
-                selectedColor={selectedColor}
-                onSelectColor={setSelectedColor}
-                showColorWheel={selectedProduct?.showColorWheel || true}
-              />
-            )}
-            {selectedProduct?.sizes && (
-              <SizesSection sizes={selectedProduct?.sizes} limit={9} />
-            )}
-
-            <SizeGuide />
-
-            <CustomizationBtns
-              onImgClick={handleCustomPictureUpload}
-              onTextClick={handleOpen}
-            />
-            {selectedProduct?.options && (
-              <DisplayOptions options={selectedProduct?.options} />
-            )}
-          </Stack>
-        </Grid>
+        <RenderDetails
+          selectedProduct={selectedProduct}
+          handleCustomPictureUpload={handleCustomPictureUpload}
+          handleOpen={handleOpen}
+          selectedColor={selectedColor}
+          setSelectedColor={setSelectedColor}
+        />
       </Grid>
 
       {/* //Other Images */}
@@ -395,6 +311,7 @@ const Configurator = () => {
           </Grid>
         ))}
       </Grid>
+
       <SimilarItems selectedItem={selectedProduct} />
     </Container>
   );

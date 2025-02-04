@@ -7,8 +7,8 @@ import {
   Stack,
   Typography,
 } from "@mui/material";
-import { paths } from "../../../routes/paths";
-import Image from "../../../components/Image";
+import { paths } from "../../../../routes/paths";
+import Image from "../../../../components/Image";
 
 export default function index() {
   const data = [

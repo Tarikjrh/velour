@@ -10,10 +10,6 @@ import AboutUs from "../views/AboutUs";
 
 // ----------------------------------------------------------------------
 
-// export const HomePage = lazy(() => import("src/pages/home"));
-
-// ----------------------------------------------------------------------
-
 export const mainRoutes = [
   {
     element: (
@@ -47,12 +43,6 @@ export const mainRoutes = [
         <Outlet />
       </Suspense>
     ),
-    children: [
-      // { path: "coming-soon", element: <ComingSoonPage /> },
-      // { path: "maintenance", element: <MaintenancePage /> },
-      // { path: "500", element: <Page500 /> },
-      { path: "404", element: <Page404 /> },
-      // { path: "403", element: <Page403 /> },
-    ],
+    children: [{ path: "404", element: <Page404 /> }],
   },
 ];

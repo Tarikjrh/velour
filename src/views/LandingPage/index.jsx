@@ -1,11 +1,10 @@
 import { Stack } from "@mui/material";
-import Strengths from "./components/Strengths";
-import CarouselHero from "./components/CarouselHero";
-import Customization from "./components/Customization";
-import UniformsGrid from "./components/UniformsGrid";
-// import Milestones from "./components/Milestones";
-import WhyVelour from "./components/WhyVelour";
-import Showcase from "./components/Showcase";
+import Strengths from "./sections/Strengths";
+import CarouselHero from "./sections/CarouselHero";
+import Customization from "./sections/Customization";
+import UniformsGrid from "./sections/UniformsGrid";
+import WhyVelour from "./sections/WhyVelour";
+import Showcase from "./sections/Showcase";
 import carousel_data from "./utils/carousel_data";
 import NotFoundProduct from "../../components/NotFoundProduct";
 
@@ -18,7 +17,6 @@ export default function LandingPage() {
       <Customization />
       <UniformsGrid />
       <NotFoundProduct />
-      {/* <Milestones /> */}
       <WhyVelour />
       <Showcase />
     </Stack>

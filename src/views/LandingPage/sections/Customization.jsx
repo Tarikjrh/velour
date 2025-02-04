@@ -1,5 +1,4 @@
 import { Box, Container, Typography } from "@mui/material";
-import React from "react";
 import Image from "../../../components/Image";
 import { Trans } from "react-i18next";
 

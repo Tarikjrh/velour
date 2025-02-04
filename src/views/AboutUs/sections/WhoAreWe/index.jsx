@@ -1,5 +1,5 @@
 import { Box, Container, Typography } from "@mui/material";
-import Image from "../../../components/Image";
+import Image from "../../../../components/Image";
 
 export default function WhoAreWe() {
   return (

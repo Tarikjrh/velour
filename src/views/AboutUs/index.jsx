@@ -1,9 +1,8 @@
-import React from "react";
-import AboutTitle from "./AboutTitle";
+import AboutTitle from "./sections/AboutTitle";
 import { Box } from "@mui/material";
-import WhoAreWe from "./WhoAreWe";
-import ApartSection from "./ApartSection";
-import Process from "./Process";
+import WhoAreWe from "./sections/WhoAreWe";
+import ApartSection from "./sections/ApartSection";
+import Process from "./sections/Process";
 
 export default function AboutUs() {
   return (
