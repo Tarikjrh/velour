@@ -1,106 +1,49 @@
 import PropTypes from "prop-types";
 // @mui
-import Fab from "@mui/material/Fab";
 import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
 import Card from "@mui/material/Card";
 import Stack from "@mui/material/Stack";
-import Tooltip from "@mui/material/Tooltip";
-// routes
-// utils
-// components
-import { paths } from "../../../routes/paths";
-import RouterLink from "../../../components/RouterLink";
-import Image from "../../../components/Image";
-import Iconify from "../../../components/iconify";
-import ColorPreview from "../../../components/color-utils/color-preview";
-import Label from "../../../components/Label";
-//
-// import { useCheckoutContext } from "../checkout/context";
 
-// ----------------------------------------------------------------------
+import { paths } from "../../../routes/paths";
+import Image from "../../../components/Image";
+import ColorPreview from "../../../components/color-utils/color-preview";
 
 export default function ProductItem({ product }) {
-  // const { onAddToCart } = useCheckoutContext();
-
-  const {
-    id,
-    name,
-    coverUrl,
-    price,
-    colors,
-    available,
-    sizes,
-    priceSale,
-    newLabel,
-    saleLabel,
-  } = product;
+  const { id, name, coverUrl, colors } = product;
 
   const linkTo = paths.catalog.details(id);
 
-  // const renderLabels = (newLabel.enabled || saleLabel.enabled) && (
-  //   <Stack
-  //     direction="row"
-  //     alignItems="center"
-  //     spacing={1}
-  //     sx={{ position: "absolute", zIndex: 9, top: 16, right: 16 }}
-  //   >
-  //     {newLabel.enabled && (
-  //       <Label variant="filled" color="info">
-  //         {newLabel.content}
-  //       </Label>
-  //     )}
-  //     {saleLabel.enabled && (
-  //       <Label variant="filled" color="error">
-  //         {saleLabel.content}
-  //       </Label>
-  //     )}
-  //   </Stack>
-  // );
-
-  const renderImg = (
-    <Box sx={{ position: "relative", p: 1 }}>
-      {/* <Tooltip title={!available && "Out of stock"} placement="bottom-end"> */}
-      <Image
-        alt={name}
-        src={coverUrl}
-        ratio="1/1"
-        sx={{
-          borderRadius: 1.5,
-          // ...(!available && {
-          //   opacity: 0.48,
-          //   filter: "grayscale(1)",
-          // }),
-        }}
-      />
-      {/* </Tooltip> */}
-    </Box>
-  );
-
-  const renderContent = (
-    <Stack
-      spacing={2.5}
-      sx={{ p: 3, pt: 2 }}
-      direction={"row"}
-      justifyContent={"space-between"}
-    >
-      <Box color="inherit" variant="subtitle2">
-        {name}
-      </Box>
-
-      <Stack direction="row" alignItems="center" justifyContent="space-between">
-        {colors && <ColorPreview colors={colors} />}
-      </Stack>
-    </Stack>
-  );
-
   return (
     <Card component={Link} href={linkTo} sx={{}}>
-      {/* {renderLabels} */}
+      <Box sx={{ position: "relative", p: 1 }}>
+        <Image
+          alt={name}
+          src={coverUrl}
+          ratio="1/1"
+          sx={{
+            borderRadius: 1.5,
+          }}
+        />
+      </Box>
+      <Stack
+        spacing={2.5}
+        sx={{ p: 3, pt: 2 }}
+        direction={"row"}
+        justifyContent={"space-between"}
+      >
+        <Box color="inherit" variant="subtitle2">
+          {name}
+        </Box>
 
-      {renderImg}
-
-      {renderContent}
+        <Stack
+          direction="row"
+          alignItems="center"
+          justifyContent="space-between"
+        >
+          {colors && <ColorPreview colors={colors} />}
+        </Stack>
+      </Stack>
     </Card>
   );
 }

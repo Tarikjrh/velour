@@ -36,8 +36,6 @@ export default function Strengths() {
             const scrollWidth = scrollContent.scrollWidth;
             const containerWidth = containerRef.current.offsetWidth;
 
-            // Define different animations based on screen size
-
             // Desktop animation
             if (isDesktop) {
               gsap.to(scrollContent, {

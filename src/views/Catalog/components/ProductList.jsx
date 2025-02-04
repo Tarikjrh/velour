@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 // @mui
 import Box from "@mui/material/Box";
-import Pagination, { paginationClasses } from "@mui/material/Pagination";
 //
 import { ProductItemSkeleton } from "./ProductSkeleton";
 import ProductItem from "./ProductItem";

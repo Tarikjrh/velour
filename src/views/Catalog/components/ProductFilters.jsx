@@ -1,19 +1,18 @@
 import PropTypes from "prop-types";
 import { useCallback } from "react";
 // @mui
-import Radio from "@mui/material/Radio";
 import Stack from "@mui/material/Stack";
 import Badge from "@mui/material/Badge";
 import Drawer from "@mui/material/Drawer";
 import Button from "@mui/material/Button";
 import Divider from "@mui/material/Divider";
-import Tooltip from "@mui/material/Tooltip";
-import IconButton from "@mui/material/IconButton";
+
 import Typography from "@mui/material/Typography";
-import FormControlLabel from "@mui/material/FormControlLabel";
 import Iconify from "../../../components/iconify";
 import Scrollbar from "../../../components/scrollbar";
 import ColorPicker from "../../../components/color-utils/color-picker";
+import RenderCategory from "./RenderCategory";
+import RenderHead from "./RenderHead";
 // components
 
 // ----------------------------------------------------------------------
@@ -44,56 +43,6 @@ export default function ProductFilters({
       onFilters("colors", newValue);
     },
     [onFilters]
-  );
-
-  const renderHead = (
-    <Stack
-      direction="row"
-      alignItems="center"
-      justifyContent="space-between"
-      sx={{ py: 2, pr: 1, pl: 2.5 }}
-    >
-      <Typography variant="h6" sx={{ flexGrow: 1 }}>
-        Filters
-      </Typography>
-
-      <Tooltip title="Reset">
-        <IconButton onClick={onResetFilters}>
-          <Badge color="error" variant="dot" invisible={!canReset}>
-            <Iconify icon="solar:restart-bold" />
-          </Badge>
-        </IconButton>
-      </Tooltip>
-
-      <IconButton onClick={onClose}>
-        <Iconify icon="mingcute:close-line" />
-      </IconButton>
-    </Stack>
-  );
-
-  const renderCategory = (
-    <Stack>
-      <Typography variant="subtitle2" sx={{ mb: 1 }}>
-        Category
-      </Typography>
-      {categoryOptions.map((option) => (
-        <FormControlLabel
-          key={option}
-          control={
-            <Radio
-              checked={option === filters.category}
-              onClick={() => handleFilterCategory(option)}
-            />
-          }
-          label={option}
-          sx={{
-            ...(option === "all" && {
-              textTransform: "capitalize",
-            }),
-          }}
-        />
-      ))}
-    </Stack>
   );
 
   const renderColor = (
@@ -136,13 +85,21 @@ export default function ProductFilters({
           sx: { width: 280 },
         }}
       >
-        {renderHead}
+        <RenderHead
+          onResetFilters={onResetFilters}
+          canReset={canReset}
+          onClose={onClose}
+        />
 
         <Divider />
 
         <Scrollbar sx={{ px: 2.5, py: 3 }}>
           <Stack spacing={3}>
-            {renderCategory}
+            <RenderCategory
+              categoryOptions={categoryOptions}
+              handleFilterCategory={handleFilterCategory}
+              filters={filters}
+            />
 
             {renderColor}
           </Stack>

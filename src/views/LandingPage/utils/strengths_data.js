@@ -19,17 +19,6 @@ const strengths_data = [
     description: "strengths.d4",
     img: "/strengths/sustainable.png",
   },
-  // {
-  //   title: "Customer Service",
-  //   description: "We provide the best customer service to our customers.",
-  //   img: "/strengths/trust.png",
-  // },
-
-  // {
-  //   title: "Sustainability",
-  //   description: "We provide the best sustainable products to our customers.",
-  //   img: "/strengths/trust.png",
-  // },
 ];
 
 export default strengths_data;

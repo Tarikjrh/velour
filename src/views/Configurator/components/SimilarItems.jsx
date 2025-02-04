@@ -3,13 +3,11 @@ import Image from "../../../components/Image";
 import ColorPreview from "../../../components/color-utils/color-preview";
 import { paths } from "../../../routes/paths";
 import productsData from "../../../productsData/productsData";
-import { useLocales } from "../../../locales";
 import { useEffect, useState } from "react";
 import PropTypes from "prop-types";
 
 export default function SimilarItems({ selectedItem }) {
   const [productsList, setProductsList] = useState([]);
-  const { t } = useLocales();
 
   useEffect(() => {
     const selectedCategory = selectedItem?.category;

@@ -25,11 +25,6 @@ export default function ProductFiltersResult({
 }) {
   const { t } = useLocales();
 
-  const handleRemoveGender = (inputValue) => {
-    const newValue = filters.gender.filter((item) => item !== inputValue);
-    onFilters("gender", newValue);
-  };
-
   const handleRemoveCategory = () => {
     onFilters("category", "all");
   };
@@ -40,14 +35,6 @@ export default function ProductFiltersResult({
   const handleRemoveColor = (inputValue) => {
     const newValue = filters.colors.filter((item) => item !== inputValue);
     onFilters("colors", newValue);
-  };
-
-  const handleRemovePrice = () => {
-    onFilters("priceRange", [0, 200]);
-  };
-
-  const handleRemoveRating = () => {
-    onFilters("rating", "");
   };
 
   return (
@@ -66,19 +53,6 @@ export default function ProductFiltersResult({
         flexWrap="wrap"
         alignItems="center"
       >
-        {!!filters.gender.length && (
-          <Block label={`${t("gender")}:`}>
-            {filters.gender.map((item) => (
-              <Chip
-                key={item}
-                label={item}
-                size="small"
-                onDelete={() => handleRemoveGender(item)}
-              />
-            ))}
-          </Block>
-        )}
-
         {filters.category !== "all" && (
           <Block label={`${t("category")}:`}>
             <Chip
@@ -126,16 +100,6 @@ export default function ProductFiltersResult({
                 onDelete={() => handleRemoveColor(item)}
               />
             ))}
-          </Block>
-        )}
-
-        {(filters.priceRange[0] !== 0 || filters.priceRange[1] !== 200) && (
-          <Block label={`${t("price")}:`}>
-            <Chip
-              size="small"
-              label={`$${filters.priceRange[0]} - ${filters.priceRange[1]}`}
-              onDelete={handleRemovePrice}
-            />
           </Block>
         )}
 

@@ -1,5 +1,4 @@
 import {
-  Box,
   Container,
   Paper,
   Table,
@@ -10,7 +9,6 @@ import {
   TableRow,
   Typography,
 } from "@mui/material";
-import React from "react";
 import useLocales from "../../../locales/use-locales";
 
 function createData(day, hours) {
